@@ -64,5 +64,10 @@ module.exports = {
     });
 
     return new opciones.fn().html = html;
+  },
+
+  limit: (arr, limit) => {
+    if (!Array.isArray(arr)) { return []; }
+    return arr.slice(0, limit);
   }
 };

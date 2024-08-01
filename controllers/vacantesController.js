@@ -1,5 +1,5 @@
 // controllers/vacantesController.js
-const Vacante = require('../models/Vacantes'); // Asegúrate de que el nombre del modelo sea correcto
+const Vacante = require('../models/Vacantes');
 
 exports.formularioNuevaVacante = (req, res) => {
   res.render('nueva-vacante', {
@@ -29,13 +29,18 @@ exports.agregarVacante = async (req, res) => {
 
 // Mostrar vacante
 exports.mostrarVacante = async (req, res, next) => {
-  const vacante = await Vacante.findOne({ url: req.params.url }).lean();
+  try {
+    const vacante = await Vacante.findOne({ url: req.params.url }).lean();
 
-  if (!vacante) return next();
+    if (!vacante) return next();
 
-  res.render('vacante', {
-    vacante,
-    nombrePagina: vacante.titulo,
-    tagline: 'Información sobre la vacante'
-  });
+    res.render('vacante', {
+      vacante,
+      nombrePagina: vacante.titulo,
+      barra: true
+    });
+  } catch (error) {
+    console.error(error);
+    return next();
+  }
 };

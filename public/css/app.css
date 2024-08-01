@@ -29,18 +29,33 @@ h2 {
     color: #0f0e17;
 }
 h3 {
-    font-size: 2.8rem;
-    color: #0f0e17;
+    font-size: 1.5rem;
+    color: #616065;
+}
+.lista-vacantes{
+    margin: 5rem 0;
 }
 .contenedor {
-    max-width: 1440px;
+    max-width: 1280px;
     margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 .separador {
     padding-bottom: 2rem;
     padding-top:2rem;
     border-bottom: 1px solid #272727;
 }
+.caja{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.caja_info{
+    display: flex;
+    justify-content: space-between;
+}
+
 /** Botones **/
 .btn {
     font-size: 1.8rem;
@@ -54,12 +69,14 @@ h3 {
     display: block;
     border: solid 2px #0f0e17;
 }
-.btn-verde {
+.btn-detalles {
     background-color: #0f0e17;
     color: #f9f9f9;
-    font-weight: 300;
+    font-weight: 300;   
+    font-size: 1.5rem;
+    padding: 0.5rem 2rem;
 }
-.btn-verde:hover {
+.btn-detalles:hover {
     background-color: #eceff4;
     color: #0f0e17;
 }
@@ -97,13 +114,12 @@ h3 {
 
 
 .site-header {
-    max-width: 1440px;
+    max-width: 1280px;
     min-height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin-bottom: 5rem;
 }
 
 .nombre-sitio {
@@ -125,10 +141,107 @@ h3 {
     flex:1;
     position: relative;
 }
+
+/** Grid de Vacantes **/
+.grid-vacantes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem; 
+    justify-items: center;
+}
+
+.vacante {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 2rem;
+    border: 2px solid #0f0e17;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+/** Skills **/
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nombre_skill {
+    display: inline-block;
+    border: 1px solid #000;
+    border-radius: 2rem;
+    padding: 0.25rem 1.25rem;
+    font-size: 1.25rem !important;
+    text-align: center;
+    min-width: 10rem;
+    box-sizing: border-box;
+}
 @media (min-width: 768px) {
     .buscador form {
         flex: 0 0 40%;
     }
+}
+
+@media (min-width:768px) {
+    .candidato,
+    .vacante {
+        display: flex;
+    }
+    .caja {
+        flex: 1;
+    }
+    .caja:first-of-type {
+        flex: 2;
+    }
+
+    .vacante-contenedor {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .vacante-contenedor main {
+        flex: 0 0 60%;
+    }
+    .vacante-contenedor aside {
+        flex: 0 0 calc(40% - 2rem);
+    }
+}
+
+@media (min-width: 425px) and (max-width: 768px) {
+    .grid-vacantes {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en este rango de ancho */
+        gap: 1rem; /* Espacio entre las columnas */
+    }
+}
+
+@media (max-width: 424px) {
+    h2{
+        font-size: 2em;
+    }
+    .site-header{
+        align-items: center;
+    }
+    .btn{
+        width: 85%;
+        padding: 1rem 2rem;
+    }
+    .btn-detalles{
+        width: 100%;
+    }
+    .grid-vacantes {
+        display: grid;
+        grid-template-columns: 1fr; /* 1 columna en este rango de ancho */
+        gap: 0.5rem; /* Espacio entre las columnas */
+    }
+    .nombre-sitio{
+        padding: 0;
+    }
+
 }
 .buscador input[type="text"] {
     background-color: rgba(255,255,255,.1);
@@ -160,39 +273,40 @@ h3 {
     cursor: pointer;
 }
 
-@media (min-width:768px) {
-    .candidato,
-    .vacante {
-        display: flex;
-    }
-    .caja {
-        flex: 1;
-    }
-    .caja:first-of-type{
-        flex: 2;
-    }
-}
 .candidato,
 .vacante {
-    padding: 3rem 0;
+    padding: 0.5rem 0.5rem;
     border-bottom: 1px solid #272727;
 }
-.candidato,
-.vacante:last-of-type{
-    border:none;
+.vacante{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 2rem;
+    border: 2px solid #0f0e17;
+    padding: 1rem;
+    height: 100%; 
+    min-height: 36rem;
+    width: 100%;
 }
 .caja {
-    padding: .5rem 0;
+    padding: 1.5rem;
+    background-color: #d4f6ed;
+    border-radius: 1.5rem;
+    height: 100%; 
+    min-height: 25rem; 
 }
 .caja p {
-    color: #ffffff;
+    color: #0f0e17;
 }
 .contrato {
     text-transform: capitalize;
+    margin: 0;
 }
 .caja .puesto,
 .caja .etiqueta {
-    font-weight: 700;
+    font-weight: 400;
     color: #616065;
     font-size: 2.6rem;
     margin: 0;
@@ -202,9 +316,20 @@ h3 {
     margin:1rem 0 0 0;
 }
 .caja .nombre { 
-    font-size: 2.4rem; 
+    font-size: 1.5rem; 
     margin: .5rem 0; 
     text-align: left;
+    color: #0f0e17;
+}
+.nombre_skill {
+    display: inline-block; 
+    border: 1px solid #000;
+    border-radius: 2rem;
+    padding: 0.25rem 1.25rem;
+    font-size: 1.25rem !important;
+    text-align: center;
+    min-width: 10rem;
+    line-height: 1.5;
 }
 .caja .btn {
     text-align: center;
@@ -223,39 +348,35 @@ h3 {
 .vacante-contenedor h2 {
     color: #616065;
     font-size: 2.4rem;
+    margin-bottom: 2rem;
 }
 .contenido-superior {
     margin-bottom: 6rem;
 }
-@media (min-width:768px){
-    .vacante-contenedor {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-    .vacante-contenedor main{
-        flex: 0 0 60%;
-    }
-    .vacante-contenedor aside {
-        flex: 0 0 calc(40% - 2rem);
-    }
-}
+
 .vacante-descripcion h1 {
     line-height: 1.4;
 }
 .vacante-descripcion *{
-    color: white!important;
+    color: #0f0e17!important;
     line-height: 2.2;
-}
-.skills {
-    color: white;
 }
 .skills li,
 .vacante-descripcion div  {
     font-size: 1.8rem;
-    line-height: 2.4;
+    line-height: 1.5;
 }
-
+.skills {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.skill-item {
+    flex: 1 1 calc(50% - 1.5rem); 
+}
 
 .enviar-datos h2 {
     font-size: 4rem;
@@ -451,7 +572,13 @@ p.candidatos {
 .lista-candidatos p,
 .lista-vacantes p {
     color: #0f0e17;
-    text-align: center;
+    text-align: left;
+    margin: 1rem 1rem;
+}
+
+.nombre_ubicacion{
+    font-size: 1.25rem;
+    color: #616065;
 }
 
 /** Alertas **/
@@ -495,8 +622,6 @@ p.candidatos {
 .desaparecer {
     opacity: 0;
 }
-
-
 
 /** Biografia Vacante **/
 .info-reclutador h2 {

@@ -9,14 +9,16 @@ const vacantesController = require('../controllers/vacantesController'); // Impo
 // ==============================================
 // Definir rutas
 // ==============================================
+
 module.exports = () => {
-  // Ruta para mostrar trabajos en la página principal
   router.get('/', homeController.mostrarTrabajos);
 
   // Ruta para el formulario de creación de nuevas vacantes
   router.get('/vacantes/nueva', vacantesController.formularioNuevaVacante);
-  router.post('/vacantes/nueva', vacantesController.agregarVacante)
-   // Mostrar vacante
+  router.post('/vacantes/nueva', vacantesController.agregarVacante);
+
+  // Ruta para mostrar una vacante
   router.get('/vacantes/:url', vacantesController.mostrarVacante);
-  return router; // Exportar el enrutador para usarlo en la aplicación principal
+
+  return router;
 };

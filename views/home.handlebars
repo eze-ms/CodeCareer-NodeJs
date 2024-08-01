@@ -1,42 +1,39 @@
 <main class="lista-vacantes">
-    <h2>Lista de Vacantes</h2>
-            <div class="vacante">
-                <div class="caja">
-                    <h3>Huge</h3>
-                    <p class="puesto">React Developer</p>
-                </div>
-                <div class="caja">
-                    <p class="etiqueta">Ubicación</p>
-                    <p class="nombre">Remoto</p>
-                </div>
-                <div class="caja">
-                    <p class="etiqueta">Contrato</p>
-                    <p class="nombre contrato">Tiempo completo</p>
-                </div>
-                <div class="caja centrar-vertical">
-                    <a href="#" class="btn btn-verde">Más Info</a>
-                </div>
-            </div> <!--.vacante-->
+    <h2 class="lista-vacantes">Lista de Vacantes</h2>
 
-            <div class="vacante">
-                <div class="caja">
-                    <h3>AirBNB</h3>
-                    <p class="puesto">Node Developer</p>
-                </div>
-                <div class="caja">
-                    <p class="etiqueta">Ubicación</p>
-                    <p class="nombre">Remoto</p>
-                </div>
-                <div class="caja">
-                    <p class="etiqueta">Contrato</p>
-                    <p class="nombre contrato">Tiempo completo</p>
-                </div>
-                <div class="caja centrar-vertical">
-                    <a href="#" class="btn btn-verde">Más Info</a>
-                </div>
-            </div> <!--.vacante-->
+    {{#if vacantes.length}}
 
+        <div class="grid-vacantes">
+            {{#each vacantes}}
+                <div class="vacante">
+                    <div>
+                        <div class="caja">
+                            <h3>{{empresa}}</h3>
+                            <p class="puesto">{{titulo}}</p>
+                            <p class="nombre contrato">{{contrato}}</p>
+                            <ul class="skills">
+                                {{#each (limit skills 5)}}
+                                    <li class="nombre_skill">{{this}}</li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="caja_info">
+                            <div>
+                                <p class="nombre">{{salario}}</p>
+                                <p class="nombre_ubicacion">{{ubicacion}}</p>
+                            </div>
+                            <div class="centrar-vertical">
+                                <a href="/vacantes/{{url}}" class="btn btn-detalles">Detalles</a>
+                            </div>
+                        </div>
+                    </div>         
+                </div>
+            {{/each}}
+        </div>
 
-       
-   
+    {{else}}
+        <p>No hay ofertas en este momento</p>
+    {{/if}}
 </main>
