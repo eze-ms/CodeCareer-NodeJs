@@ -14,12 +14,19 @@ const router = require('./routes'); // Archivo de rutas
 const cookieParser = require('cookie-parser'); // Cookie-parser para manejar cookies
 const session = require('express-session'); // Express-session para manejar sesiones
 const MongoStore = require('connect-mongo'); // Connect-mongo para almacenar sesiones en MongoDB
+const bodyParser = require('body-parser');
 require('./config/db'); // Conexión a la base de datos en el archivo principal
 
 // ==============================================
 // Crear una instancia de la aplicación express
 // ==============================================
 const app = express();
+
+// ==============================================
+// Habilitar body-parser
+// ==============================================
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 // ==============================================
 // Configurar el motor de vistas Handlebars

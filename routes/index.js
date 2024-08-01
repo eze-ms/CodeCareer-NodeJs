@@ -15,6 +15,8 @@ module.exports = () => {
 
   // Ruta para el formulario de creación de nuevas vacantes
   router.get('/vacantes/nueva', vacantesController.formularioNuevaVacante);
-
+  router.post('/vacantes/nueva', vacantesController.agregarVacante)
+   // Mostrar vacante
+  router.get('/vacantes/:url', vacantesController.mostrarVacante);
   return router; // Exportar el enrutador para usarlo en la aplicación principal
 };

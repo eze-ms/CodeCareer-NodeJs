@@ -1,0 +1,8 @@
+<!-- views/vacante.handlebars -->
+<h1>{{vacante.titulo}}</h1>
+<p>Empresa: {{vacante.empresa}}</p>
+<p>Ubicación: {{vacante.ubicacion}}</p>
+<p>Salario: {{vacante.salario}}</p>
+<p>Contrato: {{vacante.contrato}}</p>
+<p>Descripción: {{{vacante.descripcion}}}</p>
+<p>Skills: {{#each vacante.skills}}<span>{{this}}</span> {{/each}}</p>

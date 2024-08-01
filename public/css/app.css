@@ -386,11 +386,10 @@ trix-toolbar .trix-button--icon-strike {
     justify-content: center;
 }
 .lista-conocimientos  li.activo {
-    background-color: #00C897;
+    background-color: #d4f6ed;
 }
 .lista-conocimientos  li:hover {
     cursor: pointer;
-    background-color: #f4b88a;
 }
 
 @media (min-width:480px) {
