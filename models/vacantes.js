@@ -33,9 +33,19 @@ const vacantesSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
+  experiencia: {
+    type: String,
+    default: 0,
+    trim: true
+  },
+    nivel: {
+    type: String,
+    default: 0,
+    trim: true
+  },
   descripcion: {
     type: String,
-    trim: true,
+    trim: true
   },
   url: {
     type: String,

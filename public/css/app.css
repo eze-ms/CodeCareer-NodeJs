@@ -38,9 +38,8 @@ h3 {
 .contenedor {
     max-width: 1280px;
     margin: 0 auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
 }
+
 .separador {
     padding-bottom: 2rem;
     padding-top:2rem;
@@ -54,6 +53,9 @@ h3 {
 .caja_info{
     display: flex;
     justify-content: space-between;
+}
+.contenido-principal{
+    padding: 5rem 3rem 7rem 3rem;
 }
 
 /** Botones **/
@@ -111,8 +113,6 @@ h3 {
     color: #0f0e17;
     margin: 2rem 0 3rem 0;
 }
-
-
 .site-header {
     max-width: 1280px;
     min-height: 200px;
@@ -120,6 +120,11 @@ h3 {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    background-color: #fff;
+    padding: 5rem 3rem 7rem 3rem;
+    margin-top: 5rem;
+    border-top-left-radius: 3rem;
+    border-top-right-radius: 3rem;
 }
 
 .nombre-sitio {
@@ -180,6 +185,10 @@ h3 {
     min-width: 10rem;
     box-sizing: border-box;
 }
+
+
+
+
 @media (min-width: 768px) {
     .buscador form {
         flex: 0 0 40%;
@@ -211,6 +220,60 @@ h3 {
     }
 }
 
+/************************* PÁGINA VACANTES**************************/
+.caja_vacante{
+    display: flex;
+    align-items: center;
+    color: #616065;
+}
+.nombre_emnpresa{
+    margin-right: 1rem;
+}
+.nombre_ubicacion_vacante{
+    margin-left: 1rem;
+    font-size: 1.6rem;
+}
+.contenido-principal{
+    background-color: #fff;
+}
+.box-vacante{
+    display: flex;
+    justify-content: space-around;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 2rem;
+}
+.caja_vacante{
+    display: flex;
+}
+.etiqueta,
+.nombre{
+    margin: 1rem;
+}
+.nombre{
+    color: #0f0e17;
+}
+.skills_vacante{
+    color: #616065;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.skill-item{
+    margin-bottom: 2rem;
+}
+
+.sidebar{
+    margin-top: 4rem;
+}
+
+
+/************************* FIN**************************/
+
+
 @media (min-width: 425px) and (max-width: 768px) {
     .grid-vacantes {
         display: grid;
@@ -241,7 +304,6 @@ h3 {
     .nombre-sitio{
         padding: 0;
     }
-
 }
 .buscador input[type="text"] {
     background-color: rgba(255,255,255,.1);
@@ -346,7 +408,6 @@ h3 {
 }
 
 .vacante-contenedor h2 {
-    color: #616065;
     font-size: 2.4rem;
     margin-bottom: 2rem;
 }
@@ -358,7 +419,7 @@ h3 {
     line-height: 1.4;
 }
 .vacante-descripcion *{
-    color: #0f0e17!important;
+    color: #616065!important;
     line-height: 2.2;
 }
 .skills li,
@@ -386,9 +447,7 @@ h3 {
     color: white;
     font-size: 1.8rem;
 }
-.enviar-datos form {
 
-}
 
 /** Iniciar Sesión **/
 .default-form {
