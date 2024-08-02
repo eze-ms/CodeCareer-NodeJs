@@ -14,7 +14,8 @@ const router = require('./routes'); // Archivo de rutas
 const cookieParser = require('cookie-parser'); // Cookie-parser para manejar cookies
 const session = require('express-session'); // Express-session para manejar sesiones
 const MongoStore = require('connect-mongo'); // Connect-mongo para almacenar sesiones en MongoDB
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser'); // Body parser para analizar cuerpos de solicitud entrantes en un middleware
+const flash = require('connect-flash'); // Connect-flash para mensajes flash
 require('./config/db'); // Conexión a la base de datos en el archivo principal
 
 // ==============================================
@@ -57,6 +58,19 @@ app.use(session({
     mongooseConnection: mongoose.connection // Conexión de mongoose
   })
 }));
+
+// ==============================================
+// Alertas
+// ==============================================
+app.use(flash());
+
+// ==============================================
+// Crear nuestro middleware
+// ==============================================
+app.use((req, res, next) => {
+  res.locals.mensajes = req.flash();
+  next();
+});
 
 // ==============================================
 // Usar el archivo de rutas para manejar las solicitudes a la raíz

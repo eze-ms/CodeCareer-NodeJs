@@ -55,15 +55,13 @@
     <div class="contenido-principal contenedor">
         {{#if mensajes}}
             <div class="alertas">
-                {{#mostrarAlertas mensajes}}
-                    <li>do</li>
-                {{/mostrarAlertas}}
+                {{{mostrarAlertas mensajes}}}
             </div>
         {{/if}}
         {{{body}}}
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js"></script>
-    <script src="/dist/bundle.js"></script>
+    <script src="dist/bundle.js"></script>
 </body>
 </html>

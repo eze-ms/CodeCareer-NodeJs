@@ -1,30 +1,57 @@
+// ==============================================
+// Importar módulos necesarios
+// ==============================================
 document.addEventListener('DOMContentLoaded', () => {
-  const skills = document.querySelector('.lista-conocimientos');
+    const skills = document.querySelector('.lista-conocimientos');
 
-  if (skills) {
-    skills.addEventListener('click', agregarSkills);
+    // ==============================================
+    // Limpiar las alertas si existen
+    // ==============================================
+    let alertas = document.querySelector('.alertas');
+    if (alertas) {
+        limpiarAlertas();
+    }
 
-    // Llamar la función cuando se esté en editar
-    skillsSeleccionados();
-  }
+    // ==============================================
+    // Configuración de eventos para la lista de habilidades
+    // ==============================================
+    if (skills) {
+        skills.addEventListener('click', agregarSkills);
+        // Inicializar habilidades seleccionadas cuando se está en modo de edición
+        skillsSeleccionados();
+    }
+
+    // ==============================================
+    // Configuración de eventos para el listado de vacantes
+    // ==============================================
+    const vacantesListado = document.querySelector('.panel-administracion');
+    if (vacantesListado) {
+        vacantesListado.addEventListener('click', accionesListado);
+    }
 });
 
+// ==============================================
+// Conjunto para almacenar las habilidades seleccionadas
+// ==============================================
 const selectedSkills = new Set();
 
+// ==============================================
+// Función: Agregar o quitar habilidades al conjunto
+// ==============================================
 const agregarSkills = e => {
   if (e.target.tagName === 'LI') {
     if (e.target.classList.contains('activo')) {
-      // quitarlo del set y la clase
+      // Quitar del conjunto y remover la clase
       selectedSkills.delete(e.target.textContent);
       e.target.classList.remove('activo');
     } else {
-      // agregarlo al set y agregar la clase
+      // Agregar al conjunto y añadir la clase
       selectedSkills.add(e.target.textContent);
       e.target.classList.add('activo');
     }
   }
 
-  // Convertir el Set a un Array y luego a una cadena
+  // Actualizar el valor del input oculto con las habilidades seleccionadas
   const skillsArray = [...selectedSkills];
   const skillsInput = document.querySelector('#skills');
   if (skillsInput) {
@@ -32,15 +59,34 @@ const agregarSkills = e => {
   }
 };
 
+// ==============================================
+// Función: Inicializar el conjunto de habilidades seleccionadas
+// ==============================================
 const skillsSeleccionados = () => {
   const seleccionadas = Array.from(document.querySelectorAll('.lista-conocimientos .activo'));
   seleccionadas.forEach(seleccionada => {
     selectedSkills.add(seleccionada.textContent);
   });
-  
+
+  // Actualizar el valor del input oculto con las habilidades seleccionadas
   const skillsArray = [...selectedSkills];
   const skillsInput = document.querySelector('#skills');
   if (skillsInput) {
     skillsInput.value = skillsArray.join(',');
   }
+};
+
+// ==============================================
+// Función: Limpiar todas las alertas del DOM periódicamente
+// ==============================================
+const limpiarAlertas = () => {
+    const alertas = document.querySelector('.alertas');
+    const interval = setInterval(() => {
+        if(alertas.children.length > 0 ) {
+            alertas.removeChild(alertas.children[0]);
+        } else if (alertas.children.length === 0) {
+            alertas.parentElement.removeChild(alertas);
+            clearInterval(interval);
+        }
+    }, 2000);
 };

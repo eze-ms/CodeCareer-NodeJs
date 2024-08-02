@@ -20,7 +20,6 @@ exports.agregarVacante = async (req, res) => {
   }
 };
 
-
 exports.mostrarVacante = async (req, res, next) => {
   try {
     const vacante = await Vacante.findOne({ url: req.params.url }).lean();
@@ -38,7 +37,6 @@ exports.mostrarVacante = async (req, res, next) => {
   }
 };
 
-
 exports.formEditarVacante = async (req, res, next) => {
   try {
     const vacante = await Vacante.findOne({ url: req.params.url }).lean();
@@ -53,6 +51,21 @@ exports.formEditarVacante = async (req, res, next) => {
     console.error(error);
     return next();
   }
+};
+
+exports.editarVacante = async (req, res) => {
+  const vacanteActualizada = req.body;
+  vacanteActualizada.skills = req.body.skills.split(',');
+
+  const vacante = await Vacante.findOneAndUpdate(
+    { url: req.params.url },
+    vacanteActualizada,
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+  res.redirect(`/vacantes/${vacante.url}`);
 };
 
 // exports.mostrarTrabajos = async (req, res, next) => {
