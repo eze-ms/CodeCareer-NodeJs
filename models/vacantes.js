@@ -1,14 +1,8 @@
-// ==============================================
-// Importar módulos necesarios
-// ==============================================
-const mongoose = require('mongoose'); // Importar Mongoose para interactuar con MongoDB
-mongoose.Promise = global.Promise; // Usar promesas nativas de ES6 con Mongoose
-const slug = require('slug'); // Importar slug para generar URLs amigables
-const shortid = require('shortid'); // Importar shortid para crear IDs únicos
+const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+const slug = require('slug');
+const shortid = require('shortid');
 
-// ==============================================
-// Definición del esquema de vacantes
-// ==============================================
 const vacantesSchema = new mongoose.Schema({
   titulo: {
     type: String,
@@ -33,43 +27,39 @@ const vacantesSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
-  experiencia: {
-    type: String,
-    default: 0,
-    trim: true
-  },
-    nivel: {
-    type: String,
-    default: 0,
-    trim: true
-  },
   descripcion: {
     type: String,
-    trim: true
+    trim: true,
   },
   url: {
     type: String,
     lowercase: true
   },
-  skills: [String], // Array de habilidades requeridas
+  skills: [String],
   candidatos: [{
     nombre: String,
     email: String,
     cv: String
-  }]
+  }],
+  categoria: {
+    type: String,
+    trim: true
+  },
+  experiencia: {
+    type: String,
+    default: 0,
+    trim: true
+  },
+  nivel: {  // Añadido el campo nivel
+    type: String,
+    trim: true
+  }
 });
 
-// ==============================================
-// Middleware para crear el slug y URL únicos
-// ==============================================
 vacantesSchema.pre('save', function(next) {
-  // Crear el slug basado en el título
-  const url = slug(this.titulo)
+  const url = slug(this.titulo);
   this.url = `${slug(url)}-${shortid.generate()}`;
   next();
 });
 
-// ==============================================
-// Exportar el modelo
-// ==============================================
 module.exports = mongoose.model('Vacante', vacantesSchema);

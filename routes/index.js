@@ -20,5 +20,8 @@ module.exports = () => {
   // Ruta para mostrar una vacante
   router.get('/vacantes/:url', vacantesController.mostrarVacante);
 
+  // Editar vacantes
+  router.get('/vacantes/editar/:url', vacantesController.formEditarVacante);
+
   return router;
 };

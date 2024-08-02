@@ -1,73 +1,62 @@
 module.exports = {
+  obtenerColor: (categoria) => {
+    const colores = {
+      'Frontend': '#d4f6ed',
+      'Backend': '#fce1cc',
+      'FullStack': '#e3dbfa',
+      'UI/UX': '#dff3fe',
+      'DevOps': '#fbe2f4',
+      'Cloud': '#eceff4',
+      'Mobile': '#f0f0f0'
+    };
+    return colores[categoria] || '#ffffff';
+  },
   seleccionarSkills: (seleccionadas = [], opciones) => {
     const skills = [
       // Frontend
-      'HTML5',
-      'CSS3',
-      'JavaScript',
-      'React',
-      'Angular',
-      'Vue.js',
-      'Bootstrap',
-      'Tailwind CSS',
-      'jQuery',
-      'TypeScript',
-      'Next.js',
-      'Redux',
-      'Webpack',
+      'HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Angular', 'Vue.js', 'Next.js', 'Redux', 'Webpack', 'jQuery', 'Figma', 'Adobe XD', 
 
       // Backend
-      'Node.js',
-      'Express.js',
-      'Django',
-      'Ruby on Rails',
-      'Laravel',
-      'Spring Boot',
-      'PHP',
-      'Python',
-      'Java',
-      'GraphQL',
-      'Nest.js',
+      'Node.js', 'Express.js', 'Django', 'Ruby on Rails', 'Laravel', 'Spring Boot', 'PHP', 'Python', 'Java', 'GraphQL', 'Nest.js', 
+      'MongoDB', 'SQL', 'PostgreSQL', 'MySQL', 'Microsoft SQL Server',
 
-      // Databases
-      'MongoDB',
-      'SQL',
-      'PostgreSQL',
-      'MySQL',
+      // FullStack
+      // Combinación de Frontend y Backend ya listados
+
+      // Mobile
+      'Ionic', 'React Native', 'Kotlin', 'Swift', 'Objective-C',
 
       // DevOps
-      'Docker',
-      'Kubernetes',
-      'AWS',
-      'Azure',
-      'Google Cloud',
-      'Git',
+      'Docker', 'Kubernetes', 'Git', 'Azure DevOps', 'PowerShell',
 
-      // Testing
-      'Jest',
-      'Cypress',
-      'Selenium',
+      // Cloud
+      'AWS', 'Azure', 'Google Cloud',
 
-      // Design Tools
-      'Figma',
-      'Adobe XD',
+      // Testing (integrados en las categorías existentes)
+      'Jest', 'Cypress', 'Selenium',
 
-      // CMS
-      'WordPress'
+      // Microsoft (integrados en las categorías existentes)
+      '.NET', 'ASP', 'ASP Core', 'C#', 'Visual Studio', 'Blazor', 'Xamarin', 'Microsoft Dynamics', 'Windows Server', 'Active Directory',
     ];
 
     let html = '';
     skills.forEach(skill => {
-      html += `
-        <li>${skill}</li>
-      `;
+      html += `<li ${seleccionadas.includes(skill) ? 'class="activo"' : ''}>${skill}</li>`;
     });
 
     return new opciones.fn().html = html;
   },
 
   limit: (arr, limit) => {
-    if (!Array.isArray(arr)) { return []; }
+    if (!Array.isArray(arr)) {
+      return [];
+    }
     return arr.slice(0, limit);
+  },
+
+  tipoContrato: (seleccionado, opciones) => {
+    return opciones.fn(this).replace(
+      new RegExp(`value="${seleccionado}"`), '$& selected="selected"'
+    );
   }
 };

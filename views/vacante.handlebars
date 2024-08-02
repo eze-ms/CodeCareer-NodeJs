@@ -2,7 +2,7 @@
     <div class="box-vacante">
         <div class="caja_vacante_items">
             <p class="etiqueta">Experiencia</p>
-            <p class="nombre">{{vacante.expericencia}}</p>
+            <p class="nombre">{{vacante.experiencia}}</p>
         </div>
         <div class="caja_vacante_items">
             <p class="etiqueta">Nivel</p>
@@ -17,9 +17,7 @@
             <p class="etiqueta">Salario</p>
             <p class="nombre">{{vacante.salario}}</p>
         </div>
-
     </div>
- 
 </div>
 
 <div class="vacante-contenedor contenedor">
@@ -28,14 +26,15 @@
         <div class="vacante-descripcion">
             {{{vacante.descripcion}}}
         </div>
+        <a href="/vacantes/editar/{{vacante.url}}" class="btn btn-azul editar-btn">Editar oferta</a>
+
         <div class="sidebar">
-        <h2>Conocimientos Deseados</h2>
-        <ul class="skills_vacante">
-            {{#each vacante.skills}}
-                <li class="skill-item">{{this}}</li>
-            {{/each}}
-        </ul>
-    </div>
-    </main>
-    
+            <h2>Conocimientos Deseados</h2>
+            <ul class="lista-conocimientos conocimiento-vacante">
+                {{#each vacante.skills}}
+                    <li class="skill-item">{{this}}</li>
+                {{/each}}
+            </ul>
+        </div>
+    </main>  
 </div>

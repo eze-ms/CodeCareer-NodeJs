@@ -75,8 +75,8 @@ h3 {
     background-color: #0f0e17;
     color: #f9f9f9;
     font-weight: 300;   
-    font-size: 1.5rem;
-    padding: 0.5rem 2rem;
+    font-size: 1.25rem;
+    padding: 1rem 1rem;
 }
 .btn-detalles:hover {
     background-color: #eceff4;
@@ -98,13 +98,13 @@ h3 {
 .btn-rojo {
     background-color: #C80045;
 }
-
-.editar-btn {
-    margin-top: 4rem;
-}
 .editar-btn {
     flex: 0 0 auto;
     text-align: center;
+    margin-top: 4rem;
+    width: 32%;
+    font-size: 1.5rem;
+    padding: 1rem 6rem;
 }
 
 /** Header **/
@@ -166,6 +166,17 @@ h3 {
 }
 
 /** Skills **/
+#show-more-btn{
+    border-radius: 0.7rem;
+    width: 14%;
+    padding: 0.7rem;
+    font-size: 1.25rem;
+    background-color: #d4f6ed;
+    cursor: pointer;
+}
+.hidden_show_more {
+    display: none !important;
+  }
 .skills {
     display: flex;
     flex-wrap: wrap;
@@ -185,9 +196,6 @@ h3 {
     min-width: 10rem;
     box-sizing: border-box;
 }
-
-
-
 
 @media (min-width: 768px) {
     .buscador form {
@@ -241,17 +249,23 @@ h3 {
     justify-content: space-around;
     background-color: #f9f9f9;
     padding: 1rem;
-    border-radius: 2rem;
+    border-radius: 1rem;
+    border: 2px solid #0f0e17;
 }
 .caja_vacante{
     display: flex;
 }
+.etiqueta{
+    font-weight: 600;
+}
 .etiqueta,
 .nombre{
     margin: 1rem;
+    color: #0f0e17; 
 }
 .nombre{
-    color: #0f0e17;
+    font-weight: 400;
+    
 }
 .skills_vacante{
     color: #616065;
@@ -374,6 +388,9 @@ h3 {
     margin: 0;
     text-align: left;
 }
+.puesto{
+    color: #0f0e17 !important;
+}
 .caja .etiqueta {
     margin:1rem 0 0 0;
 }
@@ -385,7 +402,7 @@ h3 {
 }
 .nombre_skill {
     display: inline-block; 
-    border: 1px solid #000;
+    border: 2px solid #100E17;
     border-radius: 2rem;
     padding: 0.25rem 1.25rem;
     font-size: 1.25rem !important;
@@ -404,7 +421,9 @@ h3 {
 }
 .centrar-horizontal {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .vacante-contenedor h2 {
@@ -448,7 +467,6 @@ h3 {
     font-size: 1.8rem;
 }
 
-
 /** Iniciar Sesión **/
 .default-form {
     max-width: 800px;
@@ -460,6 +478,11 @@ h3 {
     margin-bottom: 3rem;
     text-transform: uppercase;
 }
+
+.campo_campo>h3 {
+    margin-top: 7rem;
+}
+
 .content-info {
     margin-bottom: 8rem;
 }
@@ -528,7 +551,7 @@ trix-toolbar .trix-button--icon-strike {
     margin-bottom: 2rem;
 }
 .default-form input[type="submit"] {
-    margin-top: 2rem;
+    margin-top: 6rem;
 }
 .default-form input[type="submit"]:hover {
     cursor: pointer;
@@ -550,23 +573,40 @@ trix-toolbar .trix-button--icon-strike {
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.lista-conocimientos  li {
+/* Clase base con estilos comunes */
+.lista-conocimientos li,
+.lista-conocimientos-vacante li {
+    list-style: none;
     background-color: #fce1cc;
     border: 2px solid #100e17;
     margin-bottom: 2rem;
     text-transform: uppercase;
     font-weight: 400;
     color: #100e17;
-    flex: 0 0 calc( 50% - 1rem);
-    text-align: center;
     border-radius: 1rem;
-    height: 5rem;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+.lista-conocimientos-vacante{
+    padding-left: 0;
+}
+
+/* Clase específica para .lista-conocimientos-vacante */
+.lista-conocimientos-vacante li {
+    height: 4rem;
+    width: 20%;
+}
+
+/* Clase específica para .lista-conocimientos */
+.lista-conocimientos li {
+    flex: 0 0 calc(50% - 1rem);
+    text-align: center;
+    height: 5rem;
+}
+
 .lista-conocimientos  li.activo {
-    background-color: #d4f6ed;
+    background-color: #fbe2f4;
 }
 .lista-conocimientos  li:hover {
     cursor: pointer;
@@ -633,6 +673,15 @@ p.candidatos {
     color: #0f0e17;
     text-align: left;
     margin: 1rem 1rem;
+    font-weight: 600;
+}
+.ubicacion,
+.contrato {
+    font-weight: 400 !important;
+}
+
+.caja > .categoria{
+    margin: 0;
 }
 
 .nombre_ubicacion{
