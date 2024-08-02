@@ -1,1 +1,33 @@
-node_modules
+# Node modules
+node_modules/
+
+# Environment variables
+variables.env
+.env
+
+# Build outputs
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime*
+
+# Temporary files
+tmp/
+temp/
+*.swp
+*.bak
+
+# Configuration files
+*.local
+*.secret
