@@ -33,7 +33,9 @@ exports.validarRegistro = [
     return true;
   }),
 
-  // Manejar errores de validación
+// ==============================================
+// Manejo de errores de validación
+// ==============================================
   (req, res, next) => {
     const errores = validationResult(req);
     if (!errores.isEmpty()) {
@@ -61,3 +63,12 @@ exports.crearUsuario = async (req, res, next) => {
     res.redirect('/crear-cuenta');
   }
 };
+
+// ==============================================
+// Crear formulario para iniciar sesion
+// ==============================================
+exports.formIniciarSesion = async (req, res) => {
+  res.render('iniciar-sesion', {
+    nombrePagina: 'Iniciar Sesión CodeCareer'
+  })
+}

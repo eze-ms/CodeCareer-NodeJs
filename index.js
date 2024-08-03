@@ -16,6 +16,7 @@ const session = require('express-session'); // Express-session para manejar sesi
 const MongoStore = require('connect-mongo'); // Connect-mongo para almacenar sesiones en MongoDB
 const bodyParser = require('body-parser'); // Body parser para analizar cuerpos de solicitud entrantes en un middleware
 const flash = require('connect-flash'); // Connect-flash para mensajes flash
+const passport = require('./config/passport'); // Configuración de Passport para autenticación de usuarios
 require('./config/db'); // Conexión a la base de datos en el archivo principal
 
 // ==============================================
@@ -44,7 +45,7 @@ app.set('view engine', 'handlebars'); // Establecer handlebars como el motor de 
 app.use(express.static(path.join(__dirname, 'public'))); // Establecer la carpeta 'public' para archivos estáticos
 
 // ==============================================
-// Configurar middleware para manejar cookies y sesiones
+// Configurar middleware para manejar cookies y SESIONES
 // ==============================================
 app.use(cookieParser());
 
@@ -58,6 +59,12 @@ app.use(session({
     mongooseConnection: mongoose.connection // Conexión de mongoose
   })
 }));
+
+// ==============================================
+// Inicializar Passport
+// ==============================================
+app.use(passport.initialize());
+app.use(passport.session());
 
 // ==============================================
 // Alertas

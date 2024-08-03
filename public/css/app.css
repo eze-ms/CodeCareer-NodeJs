@@ -491,7 +491,8 @@ h3 {
 }
 .default-form .campo {
     margin-bottom: 3rem;
-    display: flex;   
+    display: flex;
+    justify-content: center;
 }
 .default-form label {
     padding-top: 1rem;
@@ -559,11 +560,16 @@ trix-toolbar .trix-button--icon-strike {
 
 .default-form .acciones {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-end;
 }
 .default-form a {
-    color: #616065;
+    color: #227cb4;
     text-decoration: none;
+    margin-bottom: 0.25rem;
+}
+.default-form a:hover{
+    text-decoration: underline;
 }
 
 .lista-conocimientos {
@@ -710,7 +716,7 @@ p.candidatos {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    top: 65px;
+    top: 300px;
 }
 .alerta {
     padding: 1rem 3rem; 

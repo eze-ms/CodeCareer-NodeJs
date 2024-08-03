@@ -29,7 +29,7 @@ const usuariosSchema = new mongoose.Schema({
 // ==============================================
 // Método para hashear los passwords antes de guardar
 // ==============================================
-usuariosSchema.pre('save', async function(next) {
+usuariosSchema.pre('save', async function(next) {  // == Envía alerta cuando un usuario ya está registrado == // 
   if(!this.isModified('password')) {
     return next();
   }
@@ -48,6 +48,15 @@ usuariosSchema.post('save', function(error, doc, next) {
     next(error);
   }
 });
+
+// ==============================================
+// Autenticar Usuarios
+// ==============================================
+usuariosSchema.methods = {
+  compararPassword: function(password) {
+    return bcrypt.compareSync(password, this.password);
+  }
+};
 
 // ==============================================
 // Exportar el modelo
