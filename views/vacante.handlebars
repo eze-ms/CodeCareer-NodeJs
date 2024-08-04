@@ -26,15 +26,16 @@
         <div class="vacante-descripcion">
             {{{vacante.descripcion}}}
         </div>
+        
         <a href="/vacantes/editar/{{vacante.url}}" class="btn btn-azul editar-btn">Editar oferta</a>
-
-        <div class="sidebar">
+    </main>
+         <aside class="sidebar">
             <h2>Conocimientos Deseados</h2>
-            <ul class="lista-conocimientos conocimiento-vacante">
+            <ul class="skills">
                 {{#each vacante.skills}}
-                    <li class="skill-item">{{this}}</li>
+                    <li>{{this}}</li>
                 {{/each}}
             </ul>
-        </div>
-    </main>  
+        </aside>  
 </div>
+{{!-- <script src="/dist/bundle.js"></script> --}}

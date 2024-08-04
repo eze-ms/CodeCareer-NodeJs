@@ -91,6 +91,14 @@ h3 {
     background-color: #4face6;
     color: #0f0e17;
 }
+.btn-gris {
+    background-color: #eceff4;
+
+}
+.btn-gris:hover {
+    background-color: #989ba0;
+    color: #0f0e17;
+}
 
 .btn-amarillo {
     background-color: #F6B15F;
@@ -174,6 +182,7 @@ h3 {
     background-color: #d4f6ed;
     cursor: pointer;
 }
+
 .hidden_show_more {
     display: none !important;
   }
@@ -184,6 +193,20 @@ h3 {
     list-style: none;
     padding: 0;
     margin: 0;
+}
+.skills li {
+    list-style: none;
+    background-color: #fce1cc;
+    border: 2px solid #100e17;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #100e17;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 2;
 }
 
 .nombre_skill {
@@ -203,31 +226,19 @@ h3 {
     }
 }
 
-@media (min-width:768px) {
-    .candidato,
-    .vacante {
-        display: flex;
-    }
-    .caja {
-        flex: 1;
-    }
-    .caja:first-of-type {
-        flex: 2;
-    }
-
+@media (min-width:768px){
     .vacante-contenedor {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
     }
-    .vacante-contenedor main {
+    .vacante-contenedor main{
         flex: 0 0 60%;
     }
     .vacante-contenedor aside {
         flex: 0 0 calc(40% - 2rem);
     }
 }
-
 /************************* PÁGINA VACANTES**************************/
 .caja_vacante{
     display: flex;
@@ -441,7 +452,6 @@ h3 {
     color: #616065!important;
     line-height: 2.2;
 }
-.skills li,
 .vacante-descripcion div  {
     font-size: 1.8rem;
     line-height: 1.5;
@@ -580,8 +590,7 @@ trix-toolbar .trix-button--icon-strike {
     flex-wrap: wrap;
 }
 /* Clase base con estilos comunes */
-.lista-conocimientos li,
-.lista-conocimientos-vacante li {
+.lista-conocimientos li{
     list-style: none;
     background-color: #fce1cc;
     border: 2px solid #100e17;
@@ -593,15 +602,6 @@ trix-toolbar .trix-button--icon-strike {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.lista-conocimientos-vacante{
-    padding-left: 0;
-}
-
-/* Clase específica para .lista-conocimientos-vacante */
-.lista-conocimientos-vacante li {
-    height: 4rem;
-    width: 20%;
 }
 
 /* Clase específica para .lista-conocimientos */
@@ -680,6 +680,7 @@ p.candidatos {
     text-align: left;
     margin: 1rem 1rem;
     font-weight: 600;
+    text-align: center;
 }
 .ubicacion,
 .contrato {
