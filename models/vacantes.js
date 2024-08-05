@@ -50,13 +50,13 @@ const vacantesSchema = new mongoose.Schema({
     default: 0,
     trim: true
   },
-  nivel: {  // Añadido el campo nivel
+  nivel: {
     type: String,
     trim: true
   },
   autor: {
     type: mongoose.Schema.ObjectId,
-    ref: 'Usuarios',
+    ref: 'Usuarios', // Confirmar que este nombre coincide con el modelo de Usuario
     required: 'El autor es obligatorio'
   }
 });

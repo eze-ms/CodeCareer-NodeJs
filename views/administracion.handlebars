@@ -4,4 +4,35 @@
         <a href="/editar-perfil" class="btn btn-azul">Editar Perfil</a>
         <a href="/vacantes/nueva" class="btn btn-gris">Nueva Vacante</a>
     </div>
+
+    <h2>Tus ofertas de empleo</h2>
+
+    <div class="panel-administracion">
+        {{#if vacantes.length}}
+            {{#each vacantes}}
+                <div class="vacante_admin separador">
+                    <div class="caja_admin">
+                        <h3>{{empresa}}</h3>
+                        <p class="puesto">{{titulo}}</p>
+                        <p class="candidatos">
+                            {{candidatos.length}} Candidato(s)
+                        </p>     
+                    </div>
+                    <div class="box_candidatos">
+                        <div class="centrar-vertical">
+                            <a href="/candidatos/{{id}}" class="btn btn-amarillo">Candidatos</a>
+                        </div>
+                        <div class="centrar-vertical">
+                            <a href="/vacantes/editar/{{url}}" class="btn btn-verde">Editar</a>
+                        </div>
+                        <div class="centrar-vertical">
+                            <a href="#" data-eliminar="{{id}}" class="btn btn-rojo">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <p>No hay ofertas, puedes crear una</p>
+        {{/if}}
+    </div>
 </main>

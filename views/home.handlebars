@@ -8,7 +8,7 @@
             <div class="caja" style="background-color: {{obtenerColor categoria}};">
               <h3>{{empresa}}</h3>
               <p class="puesto">{{titulo}}</p>
-              <p class="categoria">{{categoria}}</p>
+              <p class="categoria_vacante">{{categoria}}</p>
               <p class="nombre contrato">{{contrato}}</p>
               <ul class="skills">
                 {{#each (limit skills 5)}}
@@ -19,7 +19,7 @@
           </div>
           <div>
             <div class="caja_info">
-              <div>
+              <div class="box_info">
                 <p class="nombre salario">{{salario}}</p>
                 <p class="nombre ubicacion">{{ubicacion}}</p>
               </div>

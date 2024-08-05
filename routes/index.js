@@ -63,11 +63,31 @@ module.exports = () => {
   router.post('/iniciar-sesion', authController.autenticarUsuario); // Autenticar al usuario
 
   // ==============================================
+  // Rutas para cerrar sesión
+  // ==============================================
+  router.get('/cerrar-sesion', 
+    authController.verificarUsuario,
+    authController.cerrarSesion
+  )
+
+  // ==============================================
   // Ruta para el panel de administración
   // ==============================================
   router.get('/administracion', 
     authController.verificarUsuario, // Verificar si el usuario está autenticado
     authController.mostrarPanel // Mostrar el panel de administración
+  );
+
+  // ==============================================
+  // Ruta para editar perfil
+  // ==============================================
+  router.get('/editar-perfil', 
+    authController.verificarUsuario,
+    usuariosController.formEditarPerfil
+  );
+  router.post('/editar-perfil',
+    authController.verificarUsuario,
+    usuariosController.editarPerfil
   );
 
   return router; // Exportar el enrutador para usarlo en la aplicación principal

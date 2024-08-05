@@ -35,7 +35,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 // ==============================================
 app.engine('handlebars', exphbs.engine({
   defaultLayout: 'layout', // Establecer un diseño predeterminado llamado 'layout'
-  helpers: require('./helpers/handlebars') // Incluir helpers personalizados para Handlebars
+  helpers: require('./helpers/handlebars'), // Incluir helpers personalizados para Handlebars
+  runtimeOptions: {
+    allowProtoPropertiesByDefault: true,
+    allowProtoMethodsByDefault: true,
+  }
 }));
 app.set('view engine', 'handlebars'); // Establecer handlebars como el motor de vistas
 
@@ -45,7 +49,7 @@ app.set('view engine', 'handlebars'); // Establecer handlebars como el motor de 
 app.use(express.static(path.join(__dirname, 'public'))); // Establecer la carpeta 'public' para archivos estáticos
 
 // ==============================================
-// Configurar middleware para manejar cookies y SESIONES
+// Configurar middleware para manejar cookies y sesiones
 // ==============================================
 app.use(cookieParser());
 

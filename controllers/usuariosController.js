@@ -71,4 +71,32 @@ exports.formIniciarSesion = async (req, res) => {
   res.render('iniciar-sesion', {
     nombrePagina: 'Iniciar Sesión CodeCareer'
   })
-}
+};
+
+// ==============================================
+// Crear formulario para editar perfil
+// ==============================================
+exports.formEditarPerfil = (req, res) => {
+  res.render('editar-perfil', {
+    nombrePagina: 'Edita tu perfil',
+    usuario: req.user, // Asegúrate de pasar los datos del usuario autenticado
+    cerrarSesion: true,
+    nombre: req.user.nombre
+  });
+};
+
+// ==============================================
+// Guardar cambios en editar perfil
+// ==============================================
+exports.editarPerfil = async (req, res) => {
+  const usuario = await Usuarios.findById(req.user._id);
+
+  usuario.nombre = req.body.nombre;
+  usuario.email = req.body.email;
+  if (req.body.password) {
+    usuario.password = req.body.password;
+  }
+  await usuario.save();
+
+  res.redirect('/administracion');
+};

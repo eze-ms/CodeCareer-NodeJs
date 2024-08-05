@@ -1,4 +1,5 @@
 const passport = require('passport');
+const Vacante = require('../models/Vacantes');
 
 // ==============================================
 // Autenticar Usuario
@@ -16,21 +17,42 @@ exports.autenticarUsuario = passport.authenticate('local', {
 // ==============================================
 // Middleware para verificar si el usuario está autenticado
 exports.verificarUsuario = (req, res, next) => {
-  // Revisar el usuario
   if (req.isAuthenticated()) {
-    return next(); // Si está autenticado, pasa al siguiente middleware
+    console.log('Usuario autenticado:', req.user); // Agregar este console.log
+    return next();
   }
-  // Redireccionar
-  res.redirect('/iniciar-sesion'); // Si no está autenticado, redirecciona a /iniciar-sesion
+  res.redirect('/iniciar-sesion');
 }
 
 // ==============================================
 // Mostrar Panel de Administración
 // ==============================================
 // Renderiza la vista de administración para el usuario autenticado
-exports.mostrarPanel = (req, res) => {
-  res.render('administracion', {
-    nombrePagina: 'Panel de Administración', // Título de la página
-    tagline: 'Crea y administra tus ofertas' // Slogan o descripción
+exports.mostrarPanel = async (req, res) => {
+  try {
+    const vacantes = await Vacante.find({ autor: req.user._id });
+    res.render('administracion', {
+      nombrePagina: 'Panel de Administración',
+      tagline: 'Crea y administra tus ofertas',
+      cerrarSesion: true,
+      nombre: req.user.nombre,
+      vacantes
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error al cargar el panel de administración');
+  }
+};
+
+// ==============================================
+// Renderiza la vista de cerrar sesión
+exports.cerrarSesion = (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Error al cerrar sesión');
+    }
+    req.flash('correcto', 'Cerraste Sesión Correctamente');
+    return res.redirect('/iniciar-sesion');
   });
-}
+};

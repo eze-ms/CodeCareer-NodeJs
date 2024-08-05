@@ -8,7 +8,9 @@ exports.formularioNuevaVacante = (req, res) => {
     nombrePagina: 'Nueva oferta',
     tagline: 'Rellena el formulario y publica la nueva oferta de empleo',
     cargarShowMore: true, // Esto asegura que se cargue showMore.js
-    cargarBundle: true // Esto asegura que se cargue bundle.js
+    cargarBundle: true, // Esto asegura que se cargue bundle.js
+    cerrarSesion: true,
+    nombre: req.user.nombre
   });
 };
 
@@ -78,7 +80,9 @@ exports.formEditarVacante = async (req, res, next) => {
       vacante, // Datos de la vacante
       nombrePagina: `Editar - ${vacante.titulo}`, // Título de la página
       cargarShowMore: true, // Esto asegura que se cargue showMore.js
-      cargarBundle: true // Esto asegura que se cargue bundle.js
+      cargarBundle: true, // Esto asegura que se cargue bundle.js
+      cerrarSesion: true,
+      nombre: req.user.nombre
     });
   } catch (error) {
     // En caso de error, registrar el error en la consola y pasar al siguiente middleware de error
