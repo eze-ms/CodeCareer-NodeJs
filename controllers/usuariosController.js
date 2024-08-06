@@ -100,3 +100,41 @@ exports.editarPerfil = async (req, res) => {
 
   res.redirect('/administracion');
 };
+
+// ======================================================
+// Validar y sanitizar los campos de editar perfil
+// ======================================================
+exports.validarPerfil = [
+  // Sanitizar campos
+  body('nombre').escape(),
+  body('email').escape(),
+
+  // Validar campos
+  body('nombre', 'El nombre no puede ir vacío').notEmpty(),
+  body('email', 'Introduzca un email válido').isEmail(),
+
+  (req, res, next) => {
+    // Validar y sanitizar la contraseña si está presente
+    if (req.body.password) {
+      body('password').escape()(req, res, () => {});
+      body('password', 'La contraseña no puede ir vacía').notEmpty()(req, res, () => {});
+    }
+
+    const errores = validationResult(req);
+    if (!errores.isEmpty()) {
+      req.flash('error', errores.array().map(error => error.msg));
+
+      return res.render('editar-perfil', { // Renderiza la vista de editar perfil
+        nombrePagina: 'Editar Perfil',
+        tagline: 'Modifica tu perfil',
+        cargarShowMore: true,
+        cargarBundle: true,
+        cerrarSesion: true,
+        nombre: req.user.nombre,
+        mensajes: req.flash()
+      });
+    }
+
+    next();
+  }
+];

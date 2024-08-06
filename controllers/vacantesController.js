@@ -1,3 +1,5 @@
+const { body, validationResult } = require('express-validator');
+const { errorMonitor } = require('connect-mongo');
 const Vacante = require('../models/Vacantes');
 
 // ==============================================
@@ -112,3 +114,45 @@ exports.editarVacante = async (req, res) => {
   // Redireccionar a la página de la vacante actualizada
   res.redirect(`/vacantes/${vacante.url}`);
 };
+
+// ======================================================
+// Validar y sanitizar los campos de las nuevas vacantes
+// ======================================================
+exports.validarVacantes = [
+  // Sanitizar campos
+  body('titulo').escape(),
+  body('empresa').escape(),
+  body('ubicacion').escape(),
+  body('salario').escape(),
+  body('contrato').escape(),
+  body('categoria').escape(),
+  body('experiencia').escape(),
+  body('nivel').escape(),
+
+  // Validar campos
+  body('titulo', 'Agrega un título a la oferta').notEmpty(),
+  body('empresa', 'Agrega el nombre de una empresa').notEmpty(),
+  body('ubicacion', 'Agrega una ubicacion').notEmpty(),
+  body('contrato', 'Selecciona el tipo de contrato').notEmpty(),
+  body('categoria', 'Agrega al menos una categoria').notEmpty(),
+  body('nivel', 'Agrega al menos un nivel de experiencia').notEmpty(),
+
+  (req, res, next) => {
+    const errores = validationResult(req);
+    if (!errores.isEmpty()) {
+      req.flash('error', errores.array().map(error => error.msg));
+
+      return res.render('nueva-vacante', {
+        nombrePagina: 'Nueva oferta',
+        tagline: 'Rellena el formulario y publica la nueva oferta de empleo',
+        cargarShowMore: true,
+        cargarBundle: true,
+        cerrarSesion: true,
+        nombre: req.user.nombre,
+        mensajes: req.flash()
+      });
+    }
+
+    next();
+  }
+];

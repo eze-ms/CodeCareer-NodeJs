@@ -27,6 +27,7 @@ module.exports = () => {
   );
   router.post('/vacantes/nueva', 
     authController.verificarUsuario, // Verificar si el usuario está autenticado
+    vacantesController.validarVacantes, // Validar y sanitizar los campos de las nuevas vacantes
     vacantesController.agregarVacante // Agregar una nueva vacante a la base de datos
   );
 
@@ -44,6 +45,7 @@ module.exports = () => {
   );
   router.post('/vacantes/editar/:url',
     authController.verificarUsuario, // Verificar si el usuario está autenticado
+    vacantesController.validarVacantes, // Validar y sanitizar los campos de las nuevas vacantes
     vacantesController.editarVacante // Editar una vacante existente en la base de datos
   );
 
@@ -87,6 +89,7 @@ module.exports = () => {
   );
   router.post('/editar-perfil',
     authController.verificarUsuario,
+    usuariosController.validarPerfil,
     usuariosController.editarPerfil
   );
 
