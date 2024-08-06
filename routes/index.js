@@ -12,14 +12,14 @@ const authController = require('../controllers/authController'); // Importar el 
 // Definir rutas
 // ==============================================
 module.exports = () => {
-  
+
   // ==============================================
-  // Ruta para mostrar trabajos en la página principal
+  // Ruta para Mostrar Ofertas en la Página Principal
   // ==============================================
   router.get('/', homeController.mostrarTrabajos);
 
   // ==============================================
-  // Rutas para el formulario de creación de nuevas vacantes
+  // Rutas para el Formulario de Creación de Nuevas Vacantes
   // ==============================================
   router.get('/vacantes/nueva', 
     authController.verificarUsuario, // Verificar si el usuario está autenticado
@@ -32,12 +32,12 @@ module.exports = () => {
   );
 
   // ==============================================
-  // Ruta para mostrar una vacante específica
+  // Ruta para Mostrar una vacante específica
   // ==============================================
   router.get('/vacantes/:url', vacantesController.mostrarVacante);
 
   // ==============================================
-  // Rutas para editar vacantes
+  // Rutas para Editar Vacantes
   // ==============================================
   router.get('/vacantes/editar/:url', 
     authController.verificarUsuario, // Verificar si el usuario está autenticado
@@ -50,7 +50,15 @@ module.exports = () => {
   );
 
   // ==============================================
-  // Rutas para crear cuenta de usuario
+  // Rutas para Eliminar Oferta
+  // ==============================================
+  router.delete('/vacantes/eliminar/:id',
+    authController.verificarUsuario,
+    vacantesController.eliminarVacante
+  );
+
+  // ==============================================
+  // Rutas para Crear Cuenta de Usuario
   // ==============================================
   router.get('/crear-cuenta', usuariosController.formCrearCuenta); // Mostrar el formulario para crear una cuenta
   router.post('/crear-cuenta', 
@@ -59,21 +67,21 @@ module.exports = () => {
   );
 
   // ==============================================
-  // Rutas para autenticar usuarios
+  // Rutas para Autenticar usuarios
   // ==============================================
   router.get('/iniciar-sesion', usuariosController.formIniciarSesion); // Mostrar el formulario de inicio de sesión
   router.post('/iniciar-sesion', authController.autenticarUsuario); // Autenticar al usuario
 
   // ==============================================
-  // Rutas para cerrar sesión
+  // Rutas para Cerrar Sesión
   // ==============================================
   router.get('/cerrar-sesion', 
     authController.verificarUsuario,
     authController.cerrarSesion
-  )
+  );
 
   // ==============================================
-  // Ruta para el panel de administración
+  // Ruta para el Panel de Administración
   // ==============================================
   router.get('/administracion', 
     authController.verificarUsuario, // Verificar si el usuario está autenticado
@@ -81,7 +89,7 @@ module.exports = () => {
   );
 
   // ==============================================
-  // Ruta para editar perfil
+  // Ruta para Editar Perfil
   // ==============================================
   router.get('/editar-perfil', 
     authController.verificarUsuario,

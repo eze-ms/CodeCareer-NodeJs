@@ -1,6 +1,9 @@
+
 // ==============================================
 // Importar módulos necesarios
 // ==============================================
+import { accionesListado } from './alert';  // Importar la función
+
 document.addEventListener('DOMContentLoaded', () => {
     const skills = document.querySelector('.lista-conocimientos');
 
@@ -12,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         limpiarAlertas();
     }
 
-    // ==============================================
+    // ==============================================  
     // Configuración de eventos para la lista de habilidades
     // ==============================================
     if (skills) {
@@ -39,41 +42,41 @@ const selectedSkills = new Set();
 // Función: Agregar o quitar habilidades al conjunto
 // ==============================================
 const agregarSkills = e => {
-  if (e.target.tagName === 'LI') {
-    if (e.target.classList.contains('activo')) {
-      // Quitar del conjunto y remover la clase
-      selectedSkills.delete(e.target.textContent);
-      e.target.classList.remove('activo');
-    } else {
-      // Agregar al conjunto y añadir la clase
-      selectedSkills.add(e.target.textContent);
-      e.target.classList.add('activo');
+    if (e.target.tagName === 'LI') {
+        if (e.target.classList.contains('activo')) {
+            // Quitar del conjunto y remover la clase
+            selectedSkills.delete(e.target.textContent);
+            e.target.classList.remove('activo');
+        } else {
+            // Agregar al conjunto y añadir la clase
+            selectedSkills.add(e.target.textContent);
+            e.target.classList.add('activo');
+        }
     }
-  }
 
-  // Actualizar el valor del input oculto con las habilidades seleccionadas
-  const skillsArray = [...selectedSkills];
-  const skillsInput = document.querySelector('#skills');
-  if (skillsInput) {
-    skillsInput.value = skillsArray.join(',');
-  }
+    // Actualizar el valor del input oculto con las habilidades seleccionadas
+    const skillsArray = [...selectedSkills];
+    const skillsInput = document.querySelector('#skills');
+    if (skillsInput) {
+        skillsInput.value = skillsArray.join(',');
+    }
 };
 
 // ==============================================
 // Función: Inicializar el conjunto de habilidades seleccionadas
 // ==============================================
 const skillsSeleccionados = () => {
-  const seleccionadas = Array.from(document.querySelectorAll('.lista-conocimientos .activo'));
-  seleccionadas.forEach(seleccionada => {
-    selectedSkills.add(seleccionada.textContent);
-  });
+    const seleccionadas = Array.from(document.querySelectorAll('.lista-conocimientos .activo'));
+    seleccionadas.forEach(seleccionada => {
+        selectedSkills.add(seleccionada.textContent);
+    });
 
-  // Actualizar el valor del input oculto con las habilidades seleccionadas
-  const skillsArray = [...selectedSkills];
-  const skillsInput = document.querySelector('#skills');
-  if (skillsInput) {
-    skillsInput.value = skillsArray.join(',');
-  }
+    // Actualizar el valor del input oculto con las habilidades seleccionadas
+    const skillsArray = [...selectedSkills];
+    const skillsInput = document.querySelector('#skills');
+    if (skillsInput) {
+        skillsInput.value = skillsArray.join(',');
+    }
 };
 
 // ==============================================
@@ -81,11 +84,15 @@ const skillsSeleccionados = () => {
 // ==============================================
 const limpiarAlertas = () => {
     const alertas = document.querySelector('.alertas');
+    if (!alertas) return; // Si no hay alertas, salir de la función inmediatamente
+
     const interval = setInterval(() => {
-        if(alertas.children.length > 0 ) {
+        if (alertas && alertas.children.length > 0) {
             alertas.removeChild(alertas.children[0]);
-        } else if (alertas.children.length === 0) {
-            alertas.parentElement.removeChild(alertas);
+        } else if (alertas && alertas.children.length === 0) {
+            if (alertas.parentElement) {
+                alertas.parentElement.removeChild(alertas);
+            }
             clearInterval(interval);
         }
     }, 2000);

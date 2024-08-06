@@ -30,7 +30,8 @@ exports.verificarUsuario = (req, res, next) => {
 // Renderiza la vista de administración para el usuario autenticado
 exports.mostrarPanel = async (req, res) => {
   try {
-    const vacantes = await Vacante.find({ autor: req.user._id });
+    const vacantes = await Vacante.find({ autor: req.user._id }); // Asegúrate de convertir el resultado a un objeto plano
+    console.log(vacantes); // Añade este console.log para verificar que los IDs están presentes
     res.render('administracion', {
       nombrePagina: 'Panel de Administración',
       tagline: 'Crea y administra tus ofertas',
@@ -43,6 +44,8 @@ exports.mostrarPanel = async (req, res) => {
     res.status(500).send('Error al cargar el panel de administración');
   }
 };
+
+
 
 // ==============================================
 // Renderiza la vista de cerrar sesión

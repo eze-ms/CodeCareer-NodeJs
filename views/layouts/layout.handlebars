@@ -10,7 +10,6 @@
     <title>{{nombrePagina}}</title>
 </head>
 <body>
-    
     <div class="nombre-sitio">
         <h1>
             <a href="/">CodeCareer</a>
@@ -67,9 +66,8 @@
         <script src="/js/showMore.js"></script>
     {{/if}}
 
-    {{#if cargarBundle}}
-        <script src="/dist/bundle.js"></script>
-    {{/if}}
-
+    <script src="/dist/app.bundle.js" defer></script>
+    <script src="/dist/alert.bundle.js" defer></script>
+    
 </body>
 </html>

@@ -156,3 +156,36 @@ exports.validarVacantes = [
     next();
   }
 ];
+
+// ==============================================
+// Eliminar una oferta de la base de datos
+// ==============================================
+exports.eliminarVacante = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const vacante = await Vacante.findById(id);
+
+    if (verificarAutor(vacante, req.user)) {
+      // Sí es el usuario, eliminar
+      await Vacante.findByIdAndDelete(id);
+      res.status(200).send('Vacante eliminada correctamente');
+    } else {
+      // No permitido
+      res.status(403).send('Error: No tienes permiso para eliminar esta vacante');
+    }
+  } catch (error) {
+    console.error('Error al eliminar la vacante:', error);
+    res.status(500).send('Hubo un error al eliminar la vacante');
+  }
+};
+
+
+const verificarAutor = (vacante = {}, usuario = {}) => {
+  if (!vacante.autor.equals(usuario._id)) {
+    return false;
+  }
+  return true;
+};
+
+
