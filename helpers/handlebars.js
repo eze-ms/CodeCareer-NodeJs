@@ -1,14 +1,18 @@
+const he = require('he');
+
 module.exports = {
   obtenerColor: (categoria) => {
+    console.log('Procesando categoría:', categoria);
     const colores = {
       'Frontend': '#d4f6ed',
       'Backend': '#fce1cc',
       'FullStack': '#e3dbfa',
-      'UI/UX': '#dff3fe',
+      'UIUX': '#dff3fe',
       'DevOps': '#fbe2f4',
       'Cloud': '#eceff4',
       'Mobile': '#f0f0f0'
     };
+
     return colores[categoria] || '#ffffff';
   },
   seleccionarSkills: (seleccionadas = [], opciones) => {
@@ -72,5 +76,7 @@ module.exports = {
       });
     }
     return html;
-  }
+  },
+
+  eq: (a, b) => a === b
 };

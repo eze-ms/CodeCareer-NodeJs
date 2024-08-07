@@ -208,7 +208,7 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 2;
+    line-height: 1;
 }
 
 .nombre_skill {
@@ -220,6 +220,10 @@ h3 {
     text-align: center;
     min-width: 10rem;
     box-sizing: border-box;
+}
+
+.skills .skills-vacante{
+    line-height: 2;
 }
 
 @media (min-width: 768px) {
@@ -249,11 +253,11 @@ h3 {
 }
 .nombre_emnpresa{
     margin-right: 1rem;
-    font-size: 2rem;
+    font-size: 2.25rem;
 }
 .nombre_ubicacion_vacante{
     margin-left: 1rem;
-    font-size: 2rem;
+    font-size: 2.25rem;
 }
 .contenido-principal{
     background-color: #fff;

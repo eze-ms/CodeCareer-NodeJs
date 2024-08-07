@@ -1,5 +1,4 @@
 const { body, validationResult } = require('express-validator');
-const { errorMonitor } = require('connect-mongo');
 const Vacante = require('../models/Vacantes');
 
 // ==============================================
@@ -29,6 +28,8 @@ exports.agregarVacante = async (req, res) => {
 
     // Dividir las habilidades en un array
     vacante.skills = req.body.skills.split(',');
+
+    vacante.categoria = encodeURIComponent(req.body.categoria); // Codificar categoría
 
     // Guardar la nueva vacante en la base de datos
     await vacante.save();
@@ -71,54 +72,49 @@ exports.mostrarVacante = async (req, res, next) => {
 // ==============================================
 exports.formEditarVacante = async (req, res, next) => {
   try {
-    // Buscar la vacante por URL en la base de datos y convertir el resultado a un objeto plano
     const vacante = await Vacante.findOne({ url: req.params.url }).lean();
 
-    // Si la vacante no se encuentra, pasar al siguiente middleware
     if (!vacante) return next();
 
-    // Si la vacante se encuentra, renderizar la vista 'editar-vacante' con los datos de la vacante
+    console.log('Vacante encontrada:', vacante);
+
     res.render('editar-vacante', {
-      vacante, // Datos de la vacante
-      nombrePagina: `Editar - ${vacante.titulo}`, // Título de la página
-      cargarShowMore: true, // Esto asegura que se cargue showMore.js
-      cargarBundle: true, // Esto asegura que se cargue bundle.js
+      vacante,
+      nombrePagina: `Editar - ${vacante.titulo}`,
+      cargarShowMore: true,
+      cargarBundle: true,
       cerrarSesion: true,
       nombre: req.user.nombre
     });
   } catch (error) {
-    // En caso de error, registrar el error en la consola y pasar al siguiente middleware de error
     console.error(error);
     return next();
   }
 };
 
+
 // ==============================================
 // Editar una vacante existente en la base de datos
 // ==============================================
 exports.editarVacante = async (req, res) => {
-  // Actualizar los datos de la vacante con los datos del formulario
   const vacanteActualizada = req.body;
   vacanteActualizada.skills = req.body.skills.split(',');
-
-  // Encontrar la vacante por URL y actualizarla con los nuevos datos
+  vacanteActualizada.categoria = encodeURIComponent(req.body.categoria); // Codificar categoría
   const vacante = await Vacante.findOneAndUpdate(
     { url: req.params.url },
     vacanteActualizada,
     {
-      new: true, // Devolver el documento actualizado en lugar del original
-      runValidators: true, // Ejecutar validadores de modelo en las actualizaciones
+      new: true,
+      runValidators: true,
     }
   );
-
-  // Redireccionar a la página de la vacante actualizada
   res.redirect(`/vacantes/${vacante.url}`);
 };
 
 // ======================================================
 // Validar y sanitizar los campos de las nuevas vacantes
 // ======================================================
-exports.validarVacantes = [
+exports.validarVacante = [
   // Sanitizar campos
   body('titulo').escape(),
   body('empresa').escape(),
@@ -180,12 +176,9 @@ exports.eliminarVacante = async (req, res) => {
   }
 };
 
-
 const verificarAutor = (vacante = {}, usuario = {}) => {
   if (!vacante.autor.equals(usuario._id)) {
     return false;
   }
   return true;
 };
-
-

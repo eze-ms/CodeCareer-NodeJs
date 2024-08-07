@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==============================================
 // Función para manejar eliminar en la lista de ofertas
 // ==============================================
-const accionesListado = e => {
+export const accionesListado = e => {
     e.preventDefault();
     console.log('Elemento clicado:', e.target);
 

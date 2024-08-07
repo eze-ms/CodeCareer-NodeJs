@@ -36,13 +36,13 @@
                 <label>Categoria</label>
                 <select name="categoria">
                     <option value="" disabled>-- Selecciona --</option>
-                    <option value="Frontend">Frontend</option>
-                    <option value="Backend">Backend</option>
-                    <option value="Backend">FullStack</option>
-                    <option value="Backend">Mobile</option>
-                    <option value="UI/UX">UI/UX</option>
-                    <option value="DevOps">DevOps</option>
-                    <option value="Cloud">Cloud</option>
+                    <option value="Frontend" {{#if (eq vacante.categoria "Frontend")}}selected{{/if}}>Frontend</option>
+                    <option value="Backend" {{#if (eq vacante.categoria "Backend")}}selected{{/if}}>Backend</option>
+                    <option value="FullStack" {{#if (eq vacante.categoria "FullStack")}}selected{{/if}}>FullStack</option>
+                    <option value="Mobile" {{#if (eq vacante.categoria "Mobile")}}selected{{/if}}>Mobile</option>
+                    <option value="UI/UX" {{#if (eq vacante.categoria "UI/UX")}}selected{{/if}}>UI/UX</option>
+                    <option value="DevOps" {{#if (eq vacante.categoria "DevOps")}}selected{{/if}}>DevOps</option>
+                    <option value="Cloud" {{#if (eq vacante.categoria "Cloud")}}selected{{/if}}>Cloud</option>
                 </select>
             </div>
             <div class="campo">
@@ -53,13 +53,13 @@
                 <label>Nivel</label>
                 <select name="nivel">
                     <option value="" disabled selected>-- Selecciona --</option>
-                    <option value="Intern">Intern</option>
-                    <option value="Junior">Junior</option>
-                    <option value="Mid-Level">Mid-Level</option>
-                    <option value="Senior">Senior</option>
-                    <option value="Lead">Lead</option>
-                    <option value="Manager">Manager</option>
-                    <option value="Director">Director</option>
+                    <option value="Intern" {{#if (eq vacante.nivel "Intern")}}selected{{/if}}>Intern</option>
+                    <option value="Junior" {{#if (eq vacante.nivel "Junior")}}selected{{/if}}>Junior</option>
+                    <option value="Mid-Level" {{#if (eq vacante.nivel "Mid-Level")}}selected{{/if}}>Mid-Level</option>
+                    <option value="Senior" {{#if (eq vacante.nivel "Senior")}}selected{{/if}}>Senior</option>
+                    <option value="Lead" {{#if (eq vacante.nivel "Lead")}}selected{{/if}}>Lead</option>
+                    <option value="Manager" {{#if (eq vacante.nivel "Manager")}}selected{{/if}}>Manager</option>
+                    <option value="Director" {{#if (eq vacante.nivel "Director")}}selected{{/if}}>Director</option>
                 </select>
             </div>
         </div>
@@ -84,7 +84,3 @@
             <button type="button" id="show-more-btn" class="btn btn-azul">Ver más</button>
             <input type="hidden" name="skills" id="skills" value="{{vacante.skills}}">
             <input type="submit" value="Guardar cambios" class="btn btn-azul">
-        </div>
-
-    </form>
-</main>
