@@ -16,7 +16,8 @@ module.exports = () => {
   // ==============================================
   // Ruta para Mostrar Ofertas en la Página Principal
   // ==============================================
-  router.get('/', homeController.mostrarTrabajos);
+  router.get('/', 
+    homeController.mostrarTrabajos);
 
   // ==============================================
   // Rutas para el Formulario de Creación de Nuevas Vacantes
@@ -72,6 +73,7 @@ module.exports = () => {
   router.get('/iniciar-sesion', usuariosController.formIniciarSesion); // Mostrar el formulario de inicio de sesión
   router.post('/iniciar-sesion', authController.autenticarUsuario); // Autenticar al usuario
 
+
   // ==============================================
   // Rutas para Cerrar Sesión
   // ==============================================
@@ -79,6 +81,13 @@ module.exports = () => {
     authController.verificarUsuario,
     authController.cerrarSesion
   );
+
+   // ==============================================
+  // Rutas para Reestablecer Password
+  // ==============================================
+  router.get('/reestablecer-password', authController.formReestablecerPassword);
+  router.post('/reestablecer-password', authController.enviarToken);
+  
 
   // ==============================================
   // Ruta para el Panel de Administración
@@ -101,6 +110,18 @@ module.exports = () => {
     usuariosController.subirImagen,
     usuariosController.editarPerfil
   );
+
+  // Recibir mensajes de Candidatos
+  router.post('/vacantes/:url', 
+    vacantesController.subirCV,
+    vacantesController.contactar
+  );
+
+  // Mostrar los candidatos por vacante
+  router.get('/candidatos/:id',
+    authController.verificarUsuario,
+    vacantesController.mostrarCandidatos
+  )
 
   return router; // Exportar el enrutador para usarlo en la aplicación principal
 };

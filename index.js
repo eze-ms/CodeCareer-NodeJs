@@ -79,6 +79,7 @@ app.use(flash());
 // Crear nuestro middleware
 // ==============================================
 app.use((req, res, next) => {
+  console.log(`Request URL: ${req.url}`);
   res.locals.mensajes = req.flash();
   next();
 });

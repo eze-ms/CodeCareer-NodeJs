@@ -3,6 +3,30 @@ const Usuarios = require("../models/Usuarios");
 const multer = require('multer');
 const shortid = require('shortid');
 
+
+// ==============================================
+// Subir Imágenes al formulario
+// ==============================================
+exports.subirImagen = (req, res, next) => {
+  upload(req, res, function(error) {
+    if(error) {
+      if(error instanceof multer.MulterError) {
+          if(error.code === 'LIMIT_FILE_SIZE') {
+              req.flash('error', 'El archivo es muy grande: Máximo 100kb ');
+          } else {
+              req.flash('error', error.message);
+          }
+      } else {
+          req.flash('error', error.message);
+      }
+      res.redirect('/editar-perfil');
+      return;
+    } else {
+        return next();
+    }
+  });
+};
+
 // ==============================================
 // Opciones de Multer
 // ==============================================
@@ -29,29 +53,6 @@ const configuracionMulter = {
 
 // Crear el middleware de multer
 const upload = multer(configuracionMulter).single('imagen');
-
-// ==============================================
-// Subir Imágenes al formulario
-// ==============================================
-exports.subirImagen = (req, res, next) => {
-  upload(req, res, function(error) {
-    if(error) {
-      if(error instanceof multer.MulterError) {
-          if(error.code === 'LIMIT_FILE_SIZE') {
-              req.flash('error', 'El archivo es muy grande: Máximo 100kb ');
-          } else {
-              req.flash('error', error.message);
-          }
-      } else {
-          req.flash('error', error.message);
-      }
-      res.redirect('/editar-perfil');
-      return;
-    } else {
-        return next();
-    }
-  });
-};
 
 // ==============================================
 // Renderizar formulario de creación de cuenta

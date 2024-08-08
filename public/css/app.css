@@ -233,7 +233,7 @@ h3 {
 
 @media (min-width: 768px) {
     .buscador form {
-        flex: 0 0 65%;
+        flex: 0 0 35%;
     }
 }
 
@@ -310,14 +310,17 @@ h3 {
 .sidebar{
     margin-top: 4rem;
 }
-
-
 /************************* FIN**************************/
 
 /************************** PANEL ADMIN ****************************/
     .vacante_admin{
         display: flex;
         justify-content: space-between;
+        padding: 2rem;
+        border-radius: 1rem;
+        border: 2px solid #100E17;
+        box-shadow: 0 0 11px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
     }
     .caja_admin{
         display: flex;
@@ -345,9 +348,15 @@ h3 {
     .btn-rojo {
         background-color: #fbe2f4;
     }
+    .btn-verde_enviar{
+        background-color: #d4f6ed;;
+    }
+    .btn-verde_enviar:hover{
+        background-color: #95cebf;;
+    }
     .editar_perfil {
         width: 35% !important;
-        background-color: #f9f9f9;
+        background-color: #fff;
         padding: 3rem;
         border-radius: 1rem;
         display: flex;
@@ -419,6 +428,59 @@ h3 {
 /************************* FIN**************************/
 
 
+/************************* CANDIDATOS **************************/
+
+.lista-candidatos h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #007bff;
+}
+
+.candidato {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    border: 2px solid #100E17;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+.caja_candidato {
+    margin: 0 15px;
+    display: flex;
+    align-items: center;
+}
+
+.etiqueta {
+    font-weight: bold;
+    color: #555;
+}
+
+.nombre {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.btn-verde-candidatos {
+    background-color: #d4f6ed;
+    color: #218838;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.btn-verde-candidatos:hover {
+    background-color: #61b49e;
+    color: #fff;
+}
+/************************* FIN**************************/
+
 @media (min-width: 425px) and (max-width: 768px) {
     .grid-vacantes {
         display: grid;
@@ -480,12 +542,8 @@ h3 {
     cursor: pointer;
 }
 
-.candidato,
-.vacante {
-    padding: 0.5rem 0.5rem;
-    border-bottom: 1px solid #272727;
-}
 .vacante{
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -590,12 +648,14 @@ h3 {
 
 .enviar-datos h2 {
     font-size: 4rem;
-    color: white;
+    color: #0f0e17 !important;
 }
 .enviar-datos p {
-    color: white;
+    color: #0f0e17 !important;
     font-size: 1.8rem;
 }
+
+
 
 /** Iniciar Sesión **/
 .default-form {
@@ -608,6 +668,7 @@ h3 {
     border: 2px solid #000;
     padding: 3rem;
     border-radius: 1rem;
+    box-shadow: 0 0 11px rgba(0, 0, 0, 0.1);
 }
 .default-form h3 {
     color: #616065;
@@ -791,7 +852,6 @@ p.candidatos {
 .admin-perfil {
     width: 50%;
     align-self: center;
-    margin-bottom: 3rem;
 }
 .cerrar-sesion p {
     margin:  0 2rem 0 0;
@@ -824,12 +884,19 @@ p.candidatos {
 .botones a {
     margin-right: 2rem;
 }
+.caja_admin h3{
+    font-size: 2rem;
+}
 .lista-candidatos p,
 .lista-vacantes p {
     color: #0f0e17;
     text-align: left;
     font-weight: 400;
     text-align: center;
+    font-size: 2rem;
+}
+.caja_admin .candidatos{
+    font-weight: 400;
 }
 .caja > .categoria_vacante{
     text-align: left;
@@ -893,6 +960,9 @@ p.candidatos {
 }
 
 /** Biografia Vacante **/
+.enviar-datos{
+    border-right: 2px solid #000;
+}
 .info-reclutador h2 {
     color: #616065;
     font-size: 2.4rem;
@@ -900,6 +970,7 @@ p.candidatos {
 .info-reclutador img {
     max-width: 300px;
     width: 100%;
+    border: 1px solid #0f0e17
 }
 .datos-reclutador {
     border-top: 3px solid #272727;
@@ -910,7 +981,7 @@ p.candidatos {
 }
 .datos-reclutador p {
     font-size: 2.4rem;
-    color: white;
+    color: #616065;
 }
 @media (min-width:768px){
     .enviar-datos {
