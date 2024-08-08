@@ -11,29 +11,36 @@
 </head>
 <body>
     <div class="nombre-sitio">
-        <h1>
+        <div class="box_info_header">
+            <h1>
             <a href="/">CodeCareer</a>
-        </h1>
+            </h1>
 
-        {{#if barra}}
-            <div class="buscador">
-                <form action="/buscador" method="POST">
-                    <input type="text" name="q" class="buscar">
-                    <input type="submit" value="Buscar">
-                </form>
-            </div>
-        {{/if}}
+            {{#if barra}}
+                <div class="buscador">
+                    <form action="/buscador" method="POST">
+                        <input type="text" name="q" class="buscar">
+                        <input type="submit" value="Buscar">
+                    </form>
+                </div>
+            {{/if}}
 
-        {{#if cerrarSesion}}
-            <div class="cerrar-sesion">
-                <p>Hola, {{nombre}}</p>
-                {{#if imagen}}
-                    <img src="/uploads/perfiles/{{imagen}}" class="admin-perfil">
-                {{/if}}
-                <a href="/administracion">Administración</a>
-                <a href="/cerrar-sesion">Cerrar Sesión</a>
-            </div>
-        {{/if}}
+            {{#if cerrarSesion}}
+                <div class="cerrar-sesion">
+                    <div class="box_usuario">
+                        <p>Hola, {{nombre}}</p>
+                        {{#if imagen}}
+                            <img src="/uploads/perfiles/{{imagen}}" class="admin-perfil">
+                        {{/if}}
+                    </div>
+                    <div class="admin_cerrar_sesion">
+                        <a href="/administracion">Administración</a>
+                        <a href="/cerrar-sesion">Cerrar Sesión</a>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+        
     </div>
 
     <header class="site-header contenedor separador">

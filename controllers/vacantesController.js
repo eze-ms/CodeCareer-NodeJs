@@ -11,7 +11,8 @@ exports.formularioNuevaVacante = (req, res) => {
     cargarShowMore: true, // Esto asegura que se cargue showMore.js
     cargarBundle: true, // Esto asegura que se cargue bundle.js
     cerrarSesion: true,
-    nombre: req.user.nombre
+    nombre: req.user.nombre,
+    imagen: req.user.imagen
   });
 };
 
@@ -59,6 +60,9 @@ exports.mostrarVacante = async (req, res, next) => {
       vacante, // Datos de la vacante
       nombrePagina: vacante.titulo, // Título de la página es el título de la vacante
       barra: true, // Indica que se debe mostrar una barra en la vista (esto depende de la implementación de la vista)
+      cerrarSesion: true,
+      nombre: req.user.nombre,
+      // imagen: req.user.imagen,
     });
   } catch (error) {
     // En caso de error, registrar el error en la consola y pasar al siguiente middleware de error
@@ -84,14 +88,15 @@ exports.formEditarVacante = async (req, res, next) => {
       cargarShowMore: true,
       cargarBundle: true,
       cerrarSesion: true,
-      nombre: req.user.nombre
+      barra: true,
+      nombre: req.user.nombre,
+      imagen: req.user.imagen
     });
   } catch (error) {
     console.error(error);
     return next();
   }
 };
-
 
 // ==============================================
 // Editar una vacante existente en la base de datos
@@ -100,15 +105,29 @@ exports.editarVacante = async (req, res) => {
   const vacanteActualizada = req.body;
   vacanteActualizada.skills = req.body.skills.split(',');
   vacanteActualizada.categoria = encodeURIComponent(req.body.categoria); // Codificar categoría
-  const vacante = await Vacante.findOneAndUpdate(
-    { url: req.params.url },
-    vacanteActualizada,
-    {
-      new: true,
-      runValidators: true,
+
+  try {
+    const vacante = await Vacante.findOneAndUpdate(
+      { url: req.params.url },
+      vacanteActualizada,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
+    if (!vacante) {
+      req.flash('error', 'Hubo un error al actualizar la vacante');
+      return res.redirect('back');
     }
-  );
-  res.redirect(`/vacantes/${vacante.url}`);
+
+    req.flash('correcto', 'La vacante se ha actualizado correctamente');
+    res.redirect(`/vacantes/${vacante.url}`);
+  } catch (error) {
+    console.error(error);
+    req.flash('error', 'Hubo un error al actualizar la vacante');
+    res.redirect('back');
+  }
 };
 
 // ======================================================

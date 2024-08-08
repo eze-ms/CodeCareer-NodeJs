@@ -22,7 +22,7 @@ exports.verificarUsuario = (req, res, next) => {
     return next();
   }
   res.redirect('/iniciar-sesion');
-}
+};
 
 // ==============================================
 // Mostrar Panel de Administración
@@ -37,6 +37,7 @@ exports.mostrarPanel = async (req, res) => {
       tagline: 'Crea y administra tus ofertas',
       cerrarSesion: true,
       nombre: req.user.nombre,
+      imagen: req.user.imagen,
       vacantes
     });
   } catch (error) {
@@ -44,8 +45,6 @@ exports.mostrarPanel = async (req, res) => {
     res.status(500).send('Error al cargar el panel de administración');
   }
 };
-
-
 
 // ==============================================
 // Renderiza la vista de cerrar sesión

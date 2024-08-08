@@ -130,7 +130,7 @@ h3 {
     justify-content: center;
     align-items: flex-start;
     background-color: #fff;
-    padding: 5rem 3rem 7rem 3rem;
+    padding: 5rem 3rem 5rem 3rem;
     margin-top: 5rem;
     border-top-left-radius: 3rem;
     border-top-right-radius: 3rem;
@@ -138,19 +138,24 @@ h3 {
 
 .nombre-sitio {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
     background-color: #100E17;
-    padding: 1rem 22rem 1rem 22rem;
+    padding: 1rem 0 1rem 0;
 }
 .nombre-sitio a {
     color: white;
     text-decoration: none;
 }
+.box_info_header {
+    display: flex;
+    max-width: 1280px;
+    align-items: center;
+    width: 100%;
+}
 .buscador {
     display: flex;
-    justify-content: flex-end;
     flex: 1;
+    justify-content: center;
 }
 .buscador form {
     flex:1;
@@ -228,7 +233,7 @@ h3 {
 
 @media (min-width: 768px) {
     .buscador form {
-        flex: 0 0 40%;
+        flex: 0 0 65%;
     }
 }
 
@@ -246,6 +251,10 @@ h3 {
     }
 }
 /************************* PÁGINA VACANTES**************************/
+.box_info_vacante{
+    margin-bottom: 4rem;
+    width: 100%;
+}
 .caja_vacante{
     display: flex;
     align-items: center;
@@ -336,6 +345,77 @@ h3 {
     .btn-rojo {
         background-color: #fbe2f4;
     }
+    .editar_perfil {
+        width: 35% !important;
+        background-color: #f9f9f9;
+        padding: 3rem;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid #0f0e17;
+    }
+    .editar_perfil .campo {
+        flex-direction: column;
+        width: 100%;
+    }
+    .editar_perfil label {
+        flex: 0 0 5rem !important;
+    }
+    .contenedor .default-form .campo {
+        margin-bottom: 20px;
+    }
+    .contenedor .default-form .campo input[type="text"],
+    .contenedor .default-form .campo input[type="email"],
+    .contenedor .default-form .campo input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+
+    .custom-file-input-wrapper {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .custom-file-input {
+        width: 100%;
+        height: 40px;
+        opacity: 0; /* Ocultar el input real */
+        position: absolute;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+        background-color: #989ba0;
+    }
+
+    .custom-file-label {
+        display: block;
+        width: 100%;
+        height: 40px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: #f5f5f5;
+        text-align: center;
+        cursor: pointer;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .custom-file-input:focus + .custom-file-label,
+    .custom-file-input:hover + .custom-file-label {
+        border-color: #999;
+    }
+    
+    
 /************************* FIN**************************/
 
 
@@ -521,6 +601,13 @@ h3 {
 .default-form {
     max-width: 800px;
     margin: 4rem  auto 0 auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    border: 2px solid #000;
+    padding: 3rem;
+    border-radius: 1rem;
 }
 .default-form h3 {
     color: #616065;
@@ -532,9 +619,12 @@ h3 {
 .campo_campo>h3 {
     margin-top: 7rem;
 }
-
 .content-info {
-    margin-bottom: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4rem ;
+    width: 100%;
 }
 .content-conocimientos {
     margin-bottom: 0;
@@ -542,14 +632,20 @@ h3 {
 .default-form .campo {
     margin-bottom: 3rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    width: 100%;
+}
+.default-form .campo select{
+    font-size: 1.5rem;
+    color: #676767;
 }
 .default-form label {
     padding-top: 1rem;
-    flex: 0 0 18rem;
+    flex: 0 0 5rem;
     font-size: 1.8rem;
     color: #100e17;
-    font-weight: 700;
+    font-weight: 400;
     text-transform: uppercase;
 }
 .default-form input[type="email"],
@@ -563,7 +659,7 @@ h3 {
     height: 4.5rem;
     padding: 1rem;
     font-size: 1.8rem;
-    border-radius: 1rem;
+    border-radius: 4px;
     border: none;
     background-color: #0f0e1712;
     outline: none;
@@ -676,6 +772,12 @@ trix-toolbar .trix-button--icon-strike {
 
 /** Admin **/
 
+.box_usuario{
+    display: flex;
+    align-items: center;
+    margin-right: 3rem;
+}
+
 p.candidatos {
     font-weight: 400;
     color: white;
@@ -687,18 +789,22 @@ p.candidatos {
     color: #616065;
 }
 .admin-perfil {
-    width: 120px;
-    align-self: flex-start;
-    margin-right: 1rem;
+    width: 50%;
+    align-self: center;
+    margin-bottom: 3rem;
 }
 .cerrar-sesion p {
-    margin:  0 10rem 0 0;
+    margin:  0 2rem 0 0;
     font-weight: 600;
     font-size: 2.25rem;
 }
 .cerrar-sesion a {
     margin:  0 2rem 0 0;
     color: #fff;
+}
+
+.admin_cerrar_sesion a:hover{
+    text-decoration: underline;
 }
 .cerrar-sesion {
     color: white;
@@ -722,7 +828,7 @@ p.candidatos {
 .lista-vacantes p {
     color: #0f0e17;
     text-align: left;
-    font-weight: 600;
+    font-weight: 400;
     text-align: center;
 }
 .caja > .categoria_vacante{

@@ -1,5 +1,57 @@
 const { body, validationResult } = require('express-validator');
 const Usuarios = require("../models/Usuarios");
+const multer = require('multer');
+const shortid = require('shortid');
+
+// ==============================================
+// Opciones de Multer
+// ==============================================
+const configuracionMulter = {
+    limits : { fileSize : 100000 },
+    storage: fileStorage = multer.diskStorage({
+        destination : (req, file, cb) => {
+            cb(null, __dirname+'../../public/uploads/perfiles');
+        }, 
+        filename : (req, file, cb) => {
+            const extension = file.mimetype.split('/')[1];
+            cb(null, `${shortid.generate()}.${extension}`);
+        }
+    }),
+    fileFilter(req, file, cb) {
+        if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' ) {
+            // el callback se ejecuta como true o false : true cuando la imagen se acepta
+            cb(null, true);
+        } else {
+            cb(new Error('Formato No Válido'));
+        }
+    }
+};
+
+// Crear el middleware de multer
+const upload = multer(configuracionMulter).single('imagen');
+
+// ==============================================
+// Subir Imágenes al formulario
+// ==============================================
+exports.subirImagen = (req, res, next) => {
+  upload(req, res, function(error) {
+    if(error) {
+      if(error instanceof multer.MulterError) {
+          if(error.code === 'LIMIT_FILE_SIZE') {
+              req.flash('error', 'El archivo es muy grande: Máximo 100kb ');
+          } else {
+              req.flash('error', error.message);
+          }
+      } else {
+          req.flash('error', error.message);
+      }
+      res.redirect('/editar-perfil');
+      return;
+    } else {
+        return next();
+    }
+  });
+};
 
 // ==============================================
 // Renderizar formulario de creación de cuenta
@@ -81,7 +133,8 @@ exports.formEditarPerfil = (req, res) => {
     nombrePagina: 'Edita tu perfil',
     usuario: req.user, // Asegúrate de pasar los datos del usuario autenticado
     cerrarSesion: true,
-    nombre: req.user.nombre
+    nombre: req.user.nombre,
+    imagen: req.user.imagen
   });
 };
 
@@ -96,8 +149,13 @@ exports.editarPerfil = async (req, res) => {
   if (req.body.password) {
     usuario.password = req.body.password;
   }
+  if(req.file){
+    usuario.imagen = req.file.filename;
+  }
+
   await usuario.save();
 
+  req.flash('correcto', 'Cambios Guardados Correctamente');
   res.redirect('/administracion');
 };
 
@@ -131,10 +189,11 @@ exports.validarPerfil = [
         cargarBundle: true,
         cerrarSesion: true,
         nombre: req.user.nombre,
+        imagen: req.user.imagen,
         mensajes: req.flash()
       });
     }
 
-    next();
+    next(); // todo bien, siguiente middleware!
   }
 ];
