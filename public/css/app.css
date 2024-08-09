@@ -47,6 +47,10 @@ h3 {
     margin: 0 auto;
 }
 
+.no_encontrado {
+    color: #0f0e17;
+}
+
 .separador {
     padding-bottom: 2rem;
     padding-top:2rem;
@@ -543,7 +547,6 @@ h3 {
 }
 
 .vacante{
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -832,7 +835,13 @@ trix-toolbar .trix-button--icon-strike {
 }
 
 /** Admin **/
-
+.admin-perfil {
+    width: 50px; /* Puedes ajustar el tamaño según tus necesidades */
+    height: 50px; /* Asegúrate de que la altura coincida con el ancho para mantener el círculo */
+    border-radius: 50%; /* Esto hará que la imagen sea circular */
+    object-fit: cover; /* Asegura que la imagen se ajuste bien dentro del círculo */
+    margin-left: 1rem; /* Espacio entre el texto y la imagen */
+}
 .box_usuario{
     display: flex;
     align-items: center;
@@ -848,10 +857,6 @@ p.candidatos {
     text-align: left!important;
     text-decoration: none;
     color: #616065;
-}
-.admin-perfil {
-    width: 50%;
-    align-self: center;
 }
 .cerrar-sesion p {
     margin:  0 2rem 0 0;
@@ -870,9 +875,6 @@ p.candidatos {
     color: white;
     display: flex;
     align-items: center;
-}
-.cerrar-sesion img {
-    width: 80px;
 }
 .botones {
     display: flex;

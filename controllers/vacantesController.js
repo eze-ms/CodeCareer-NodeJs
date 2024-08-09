@@ -5,7 +5,7 @@ const shortid = require('shortid');
 const { cerrarSesion } = require('./authController');
 
 // ==============================================
-// Renderizar el formulario para crear una nueva vacante
+//! Renderizar el formulario para crear una nueva vacante
 // ==============================================
 exports.formularioNuevaVacante = (req, res) => {
   res.render('nueva-vacante', {
@@ -20,7 +20,7 @@ exports.formularioNuevaVacante = (req, res) => {
 };
 
 // ==============================================
-// Agregar una nueva vacante a la base de datos
+//! Agregar una nueva vacante a la base de datos
 // ==============================================
 exports.agregarVacante = async (req, res) => {
   try {
@@ -33,7 +33,7 @@ exports.agregarVacante = async (req, res) => {
     // Dividir las habilidades en un array
     vacante.skills = req.body.skills.split(',');
 
-    vacante.categoria = encodeURIComponent(req.body.categoria); // Codificar categoría
+    vacante.categoria = encodeURIComponent(req.body.categoria); //* Codificar categoría
 
     // Guardar la nueva vacante en la base de datos
     await vacante.save();
@@ -48,7 +48,7 @@ exports.agregarVacante = async (req, res) => {
 };
 
 // ==============================================
-// Mostrar una vacante específica
+//! Mostrar una vacante específica
 // ==============================================
 exports.mostrarVacante = async (req, res, next) => {
   try {
@@ -61,8 +61,8 @@ exports.mostrarVacante = async (req, res, next) => {
     // Si la vacante se encuentra, renderizar la vista 'vacante' con los datos de la vacante
     res.render('vacante', {
       vacante, // Datos de la vacante
-      nombrePagina: vacante.titulo, // Título de la página es el título de la vacante
-      barra: true, // Indica que se debe mostrar una barra en la vista (esto depende de la implementación de la vista)
+      nombrePagina: vacante.titulo, //* Título de la página es el título de la vacante
+      barra: true, //* Indica que se debe mostrar una barra en la vista (esto depende de la implementación de la vista)
     });
   } catch (error) {
     // En caso de error, registrar el error en la consola y pasar al siguiente middleware de error
@@ -72,7 +72,7 @@ exports.mostrarVacante = async (req, res, next) => {
 };
 
 // ==============================================
-// Renderizar el formulario para editar una vacante
+//! Renderizar el formulario para editar una vacante
 // ==============================================
 exports.formEditarVacante = async (req, res, next) => {
   try {
@@ -99,12 +99,12 @@ exports.formEditarVacante = async (req, res, next) => {
 };
 
 // ==============================================
-// Editar una vacante existente en la base de datos
+//! Editar una vacante existente en la base de datos
 // ==============================================
 exports.editarVacante = async (req, res) => {
   const vacanteActualizada = req.body;
   vacanteActualizada.skills = req.body.skills.split(',');
-  vacanteActualizada.categoria = encodeURIComponent(req.body.categoria); // Codificar categoría
+  vacanteActualizada.categoria = encodeURIComponent(req.body.categoria); //* Codificar categoría
 
   try {
     const vacante = await Vacante.findOneAndUpdate(
@@ -131,7 +131,7 @@ exports.editarVacante = async (req, res) => {
 };
 
 // ======================================================
-// Validar y sanitizar los campos de las nuevas vacantes
+//! Validar y sanitizar los campos de las nuevas vacantes
 // ======================================================
 exports.validarVacante = [
   // Sanitizar campos
@@ -173,7 +173,7 @@ exports.validarVacante = [
 ];
 
 // ==============================================
-// Eliminar una oferta de la base de datos
+//! Eliminar una oferta de la base de datos
 // ==============================================
 exports.eliminarVacante = async (req, res) => {
   const { id } = req.params;
@@ -194,7 +194,9 @@ exports.eliminarVacante = async (req, res) => {
     res.status(500).send('Hubo un error al eliminar la vacante');
   }
 };
-
+// ==============================================
+//! Verifica el autor
+// ==============================================
 const verificarAutor = (vacante = {}, usuario = {}) => {
   if (!vacante.autor.equals(usuario._id)) {
     return false;
@@ -203,57 +205,57 @@ const verificarAutor = (vacante = {}, usuario = {}) => {
 };
 
 // ============================================== 
-// Subir archivos en PDF
+//! Subir archivos en PDF
 // ==============================================
 exports.subirCV  =  (req, res, next) => {
     upload(req, res, function(error) {
-        if(error) {
-            if(error instanceof multer.MulterError) {
-                if(error.code === 'LIMIT_FILE_SIZE') {
-                    req.flash('error', 'El archivo es muy grande: Máximo 500kb');
-                } else {
-                    req.flash('error', error.message);
-                }
-            } else {
-                req.flash('error', error.message);
-            }
-            res.redirect('back');
-            return;
+      if(error) {
+        if(error instanceof multer.MulterError) {
+          if(error.code === 'LIMIT_FILE_SIZE') {
+              req.flash('error', 'El archivo es muy grande: Máximo 500kb');
+          } else {
+              req.flash('error', error.message);
+          }
         } else {
-            return next();
+            req.flash('error', error.message);
         }
+        res.redirect('back');
+        return;
+      } else {
+          return next();
+      }
     });
 }
 
 // ==============================================
-// Opciones de Multer
+//! Opciones de Multer
 // ==============================================
 const configuracionMulter = {
     limits : { fileSize : 500000 },
     storage: fileStorage = multer.diskStorage({
-        destination : (req, file, cb) => {
-            cb(null, __dirname+'../../public/uploads/cv');
-        },
-        filename : (req, file, cb) => {
-            const extension = file.mimetype.split('/')[1];
-            cb(null, `${shortid.generate()}.${extension}`);
-        }
+      destination : (req, file, cb) => {
+          cb(null, __dirname+'../../public/uploads/cv');
+      },
+      filename : (req, file, cb) => {
+          const extension = file.mimetype.split('/')[1];
+          cb(null, `${shortid.generate()}.${extension}`);
+      }
     }),
     fileFilter(req, file, cb) {
-        if(file.mimetype === 'application/pdf' ) {
-            // el callback se ejecuta como true o false : true cuando la imagen se acepta
-            cb(null, true);
-        } else {
-            cb(new Error('Formato No Válido'));
-        }
+      if(file.mimetype === 'application/pdf' ) {
+          // el callback se ejecuta como true o false : true cuando la imagen se acepta
+          cb(null, true);
+      } else {
+          cb(new Error('Formato No Válido'));
+      }
     }
 }
 
-// Crear el middleware de multer
+//! Crear el middleware de multer
 const upload = multer(configuracionMulter).single('cv');
 
 // ==============================================
-// Almacenar los candidatos en la base de datos
+//! Almacenar los candidatos en la base de datos
 // ==============================================
 exports.contactar = async (req, res, next) => {
   try {
@@ -293,9 +295,8 @@ exports.contactar = async (req, res, next) => {
   }
 };
 
-
 // ==============================================
-// Candidatos
+//! Candidatos
 // ==============================================
 exports.mostrarCandidatos = async (req, res, next) => {
   try {
@@ -322,3 +323,20 @@ exports.mostrarCandidatos = async (req, res, next) => {
   }
 };
 
+// ==============================================
+//! Buscador de vacantes
+// ==============================================
+exports.buscarVacantes = async (req, res) => {
+    const vacantes = await Vacante.find({
+        $text : {
+            $search : req.body.q
+        }
+    });
+
+    // mostrar las vacantes
+    res.render('home', {
+        nombrePagina : `Resultados para la búsqueda : ${req.body.q}`, 
+        barra: true,
+        vacantes 
+    })
+}
