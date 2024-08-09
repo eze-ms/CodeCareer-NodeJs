@@ -8,8 +8,8 @@ exports.mostrarTrabajos = async (req, res, next) => {
     if (!vacantes) return next();
 
     res.render('home', {
-      nombrePagina: 'CodeCareer',
-      tagline: 'Portal especializado en empleos para desarrolladores y programadores',
+      // nombrePagina: 'CodeCareer',
+      tagline: 'El portal especializado en empleos para desarrolladores y programadores',
       barra: true,
       boton: true,
       vacantes

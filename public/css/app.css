@@ -115,7 +115,7 @@ h3 {
     flex: 0 0 auto;
     text-align: center;
     margin-top: 4rem;
-    width: 32%;
+    width: 100%;
     font-size: 1.5rem;
     padding: 1rem 6rem;
 }
@@ -132,10 +132,9 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     background-color: #fff;
     padding: 5rem 3rem 5rem 3rem;
-    margin-top: 5rem;
     border-top-left-radius: 3rem;
     border-top-right-radius: 3rem;
 }
@@ -155,14 +154,14 @@ h3 {
     max-width: 1280px;
     align-items: center;
     width: 100%;
+    justify-content: space-between;
 }
-.buscador {
+/* .buscador {
     display: flex;
     flex: 1;
-    justify-content: center;
-}
+    justify-content: flex-end;
+} */
 .buscador form {
-    flex:1;
     position: relative;
 }
 
@@ -207,9 +206,7 @@ h3 {
 }
 .skills li {
     list-style: none;
-    background-color: #fce1cc;
     border: 2px solid #100e17;
-    margin-bottom: 2rem;
     text-transform: uppercase;
     font-weight: 400;
     color: #100e17;
@@ -233,11 +230,26 @@ h3 {
 
 .skills .skills-vacante{
     line-height: 2;
+    background-color: #fce1cc;
+    padding: 0.25rem 1.5rem;
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     .buscador form {
         flex: 0 0 35%;
+    }
+} */
+@media screen and (min-width: 768px) and (max-width: 900px) {
+    .box_info_header {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+    .vacante-contenedor{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .cerrar-sesion a {
+        margin: 0 !important;
     }
 }
 
@@ -246,74 +258,206 @@ h3 {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+        padding-left: 5rem;
+        padding-right: 5rem;
     }
-    .vacante-contenedor main{
+    /* .vacante-contenedor main{
         flex: 0 0 60%;
-    }
-    .vacante-contenedor aside {
+    } */
+    /* .vacante-contenedor aside {
         flex: 0 0 calc(40% - 2rem);
+    } */
+    .campo {
+        align-items: center;
+    }
+    .campo .btn-azul {
+        padding: 0.5rem 2rem;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    body{
+        margin: 0;
+    }
+    .nombre-sitio > .box_info_header{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    h1{
+        font-size: 2rem;
+    }
+    .buscador{
+        text-align: right;
+    }
+    .buscador input[type="text"]{
+        height: 3rem !important;
+        width: 70% !important;
+    }
+    .buscador input[type="submit"]{
+        top: 0 !important;
+    }
+    .grid-vacantes {
+        display: flex;
+        flex-direction: column;
+    }
+    .skills {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .btn {
+        width: 100%;
+        padding: 0.5rem 0.5rem;
+        text-align: center;
+    }
+    .contenido-principal {
+        padding: 5rem 1rem 0rem 1rem;
+    }
+    .box-vacante{
+        padding: 2rem !important;
+        flex-direction: column;
+    }
+    .caja_vacante_items {
+        display: flex ;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .site-header{
+        border-top-left-radius: 2rem;
+        border-top-right-radius: 2rem;
+        padding: 1rem 1rem 4rem;
+    }
+    .info-reclutador,
+    .sidebar{
+        margin-top: 4rem;
+    }
+    .info-reclutador{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .vacantes_form{
+        width: 100% !important;
+    }
+    .datos-reclutador{
+        flex-direction: column;
+    }
+    .enviar-datos{
+        border-right: none !important;
+    }
+
+    .box_usuario p,
+    .box_usuario img{
+        display: none;
+    }
+    .admin_cerrar_sesion{
+        text-align: right;
+    }
+    .admin_cerrar_sesion a{
+        margin: 0 !important;
+    }
+    #show-more-btn{
+        width: 50%;
+    }
+    .vacante_admin{
+        flex-direction: column;
+        padding: 1rem !important;
+    }
+    .box_candidatos{
+        margin-top: 1rem;
+    }
+    
+    .separador .btn-azul, 
+    .separador .btn-gris{
+        margin: 0;
+    }
+    .separador .btn-azul{
+        margin-bottom: 2rem;
+    }
+    .iniciar_sesion,
+    .crear_cuenta,
+    .reestablecer_password {
+        width: 100% !important;
+    }
+    .contenedor .editar_perfil {
+        width: 100%;
+    }
+    .btn-azul {
+        font-size: 1.5rem;
     }
 }
 /************************* PÁGINA VACANTES**************************/
-.box_info_vacante{
-    margin-bottom: 4rem;
-    width: 100%;
-}
-.caja_vacante{
-    display: flex;
-    align-items: center;
-    color: #616065;
-}
-.nombre_emnpresa{
-    margin-right: 1rem;
-    font-size: 2.25rem;
-}
-.nombre_ubicacion_vacante{
-    margin-left: 1rem;
-    font-size: 2.25rem;
-}
-.contenido-principal{
-    background-color: #fff;
-}
-.box-vacante{
-    display: flex;
-    justify-content: space-around;
-    background-color: #f9f9f9;
-    padding: 1rem;
-    border-radius: 1rem;
-    border: 2px solid #0f0e17;
-}
-.caja_vacante{
-    display: flex;
-}
-.etiqueta{
-    font-weight: 600;
-}
-.etiqueta,
-.nombre{
-    margin: 1rem;
-    color: #0f0e17; 
-}
-.nombre{
-    font-weight: 400;
-    
-}
-.skills_vacante{
-    color: #616065;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-.skill-item{
-    margin-bottom: 2rem;
-}
+    .form_nueva_vancante{
+        margin: 0 auto;
+    }
 
-.sidebar{
-    margin-top: 4rem;
-}
+    #show-more-btn{
+        margin-bottom: 4rem;
+    }
+    .box_info_vacante{
+        margin-bottom: 4rem;
+        width: 100%;
+    }
+    .form_editar_vacante{
+        margin: 0 auto;
+    }
+    .caja_vacante{
+        display: flex;
+        align-items: center;
+        color: #616065;
+    }
+    .vacantes_form {
+        margin: 0;
+    }
+    .nombre_emnpresa{
+        margin-right: 1rem;
+        font-size: 2.25rem;
+    }
+    .nombre_ubicacion_vacante{
+        margin-left: 1rem;
+        font-size: 2.25rem;
+    }
+    .contenido-principal{
+        background-color: #fff;
+    }
+    .box-vacante{
+        display: flex;
+        justify-content: space-around;
+        background-color: #f9f9f9;
+        padding: 1rem;
+        border-radius: 1rem;
+        border: 2px solid #0f0e17;
+    }
+    .caja_vacante{
+        display: flex;
+    }
+    .etiqueta{
+        font-weight: 600;
+    }
+    .etiqueta,
+    .nombre{
+        color: #0f0e17; 
+    }
+    .nombre{
+        font-weight: 400;
+        
+    }
+    .skills_vacante{
+        color: #616065;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .skill-item{
+        margin-bottom: 2rem;
+    }
+    .sidebar{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
 /************************* FIN**************************/
 
 /************************** PANEL ADMIN ****************************/
@@ -325,6 +469,7 @@ h3 {
         border: 2px solid #100E17;
         box-shadow: 0 0 11px rgba(0, 0, 0, 0.1);
         margin-bottom: 2rem;
+        margin-top: 4rem;
     }
     .caja_admin{
         display: flex;
@@ -333,7 +478,6 @@ h3 {
     }
     .box_candidatos{
         display: flex;
-
         gap: 1rem;
     }
     .btn-amarillo,
@@ -359,7 +503,7 @@ h3 {
         background-color: #95cebf;;
     }
     .editar_perfil {
-        width: 35% !important;
+        width: 35%;
         background-color: #fff;
         padding: 3rem;
         border-radius: 1rem;
@@ -375,9 +519,14 @@ h3 {
     .editar_perfil label {
         flex: 0 0 5rem !important;
     }
-    .contenedor .default-form .campo {
-        margin-bottom: 20px;
+
+    .campo_button {
+        width: 60% !important;
     }
+
+    /* .contenedor .default-form .campo {
+        margin-bottom: 20px;
+    } */
     .contenedor .default-form .campo input[type="text"],
     .contenedor .default-form .campo input[type="email"],
     .contenedor .default-form .campo input[type="password"] {
@@ -394,6 +543,11 @@ h3 {
         width: 100%;
         display: flex;
         flex-direction: column;
+        align-items: center;
+    }
+    .custom-file-input-wrapper img {
+        width: 50%;
+        margin-bottom: 4rem;
     }
 
     .custom-file-input {
@@ -427,7 +581,6 @@ h3 {
     .custom-file-input:hover + .custom-file-label {
         border-color: #999;
     }
-    
     
 /************************* FIN**************************/
 
@@ -485,39 +638,8 @@ h3 {
 }
 /************************* FIN**************************/
 
-@media (min-width: 425px) and (max-width: 768px) {
-    .grid-vacantes {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas en este rango de ancho */
-        gap: 1rem; /* Espacio entre las columnas */
-    }
-}
-
-@media (max-width: 424px) {
-    h2{
-        font-size: 2em;
-    }
-    .site-header{
-        align-items: center;
-    }
-    .btn{
-        width: 85%;
-        padding: 1rem 2rem;
-    }
-    .btn-detalles{
-        width: 100%;
-    }
-    .grid-vacantes {
-        display: grid;
-        grid-template-columns: 1fr; /* 1 columna en este rango de ancho */
-        gap: 0.5rem; /* Espacio entre las columnas */
-    }
-    .nombre-sitio{
-        padding: 0;
-    }
-}
 .buscador input[type="text"] {
-    background-color: rgba(255,255,255,.1);
+    background-color: rgb(255 255 255 / 30%);
     width: 100%;
     border: none;
     padding: .5rem 4rem .5rem 2rem;
@@ -561,7 +683,7 @@ h3 {
 .caja {
     padding: 1.5rem;
     background-color: #d4f6ed;
-    border-radius: 1.5rem;
+    border-radius: 1rem;
     height: 100%; 
     min-height: 25rem; 
 }
@@ -596,7 +718,7 @@ h3 {
     display: inline-block; 
     border: 2px solid #100E17;
     border-radius: 2rem;
-    padding: 0.25rem 1.25rem;
+    padding: 0.5rem 0.5rem;
     font-size: 1.25rem !important;
     text-align: center;
     min-width: 10rem;
@@ -658,16 +780,21 @@ h3 {
     font-size: 1.8rem;
 }
 
-
+/** Crear cuenta **/
+    .crear_cuenta,
+    .iniciar_sesion,
+    .reestablecer_password {
+        margin: 0 auto;
+        width: 35%;
+    }
 
 /** Iniciar Sesión **/
 .default-form {
     max-width: 800px;
-    margin: 4rem  auto 0 auto; 
+    margin: 0 auto; 
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60%;
     border: 2px solid #000;
     padding: 3rem;
     border-radius: 1rem;
@@ -699,6 +826,10 @@ h3 {
     flex-direction: column;
     justify-content: center;
     width: 100%;
+    align-items: flex-start;
+}
+.campo_button {
+    align-items: center !important;
 }
 .default-form .campo select{
     font-size: 1.5rem;
@@ -762,7 +893,7 @@ trix-toolbar .trix-button--icon-strike {
     margin-bottom: 2rem;
 }
 .default-form input[type="submit"] {
-    margin-top: 6rem;
+    margin-top: 1rem;
 }
 .default-form input[type="submit"]:hover {
     cursor: pointer;
@@ -771,7 +902,7 @@ trix-toolbar .trix-button--icon-strike {
 .default-form .acciones {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
 }
 .default-form a {
     color: #227cb4;
@@ -836,11 +967,11 @@ trix-toolbar .trix-button--icon-strike {
 
 /** Admin **/
 .admin-perfil {
-    width: 50px; /* Puedes ajustar el tamaño según tus necesidades */
-    height: 50px; /* Asegúrate de que la altura coincida con el ancho para mantener el círculo */
-    border-radius: 50%; /* Esto hará que la imagen sea circular */
-    object-fit: cover; /* Asegura que la imagen se ajuste bien dentro del círculo */
-    margin-left: 1rem; /* Espacio entre el texto y la imagen */
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    margin-left: 1rem;
 }
 .box_usuario{
     display: flex;
@@ -895,7 +1026,7 @@ p.candidatos {
     text-align: left;
     font-weight: 400;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.75rem;
 }
 .caja_admin .candidatos{
     font-weight: 400;
@@ -987,7 +1118,7 @@ p.candidatos {
 }
 @media (min-width:768px){
     .enviar-datos {
-        flex: 0 0 calc(70% - 1rem);
+        flex: 0 0 calc(65% - 1rem);
     }
     .info-reclutador {
         flex: 0 0 calc(30% - 1rem );

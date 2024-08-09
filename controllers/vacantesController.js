@@ -62,7 +62,7 @@ exports.mostrarVacante = async (req, res, next) => {
     res.render('vacante', {
       vacante, // Datos de la vacante
       nombrePagina: vacante.titulo, //* Título de la página es el título de la vacante
-      barra: true, //* Indica que se debe mostrar una barra en la vista (esto depende de la implementación de la vista)
+      barra: true,
     });
   } catch (error) {
     // En caso de error, registrar el error en la consola y pasar al siguiente middleware de error
@@ -88,7 +88,6 @@ exports.formEditarVacante = async (req, res, next) => {
       cargarShowMore: true,
       cargarBundle: true,
       cerrarSesion: true,
-      barra: true,
       nombre: req.user.nombre,
       imagen: req.user.imagen
     });

@@ -44,7 +44,7 @@
         <h2>Contactar Reclutador</h2>
         <p>Llena el siguiente formulario, sube tu curriculum y pronto te contactaremos</p>
 
-        <form method="POST" action="/vacantes/{{vacante.url}}" class="default-form" enctype="multipart/form-data">
+        <form method="POST" action="/vacantes/{{vacante.url}}" class="default-form vacantes_form" enctype="multipart/form-data">
             <div class="campo">
                 <label>Nombre</label>
                 <input type="text" name="nombre" placeholder="Escribe tu nombre completo">
@@ -60,7 +60,7 @@
                     <span class="custom-file-label">Seleccionar PDF</span>
                 </div>
             </div>
-            <div class="campo">
+            <div class="campo campo_button">
                 <input type="submit" class="btn btn-verde_enviar" value="Enviar">
             </div>
         </form>
