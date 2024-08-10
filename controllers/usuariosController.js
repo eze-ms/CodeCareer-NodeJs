@@ -59,8 +59,8 @@ const upload = multer(configuracionMulter).single('imagen');
 // ==============================================
 exports.formCrearCuenta = (req, res) => {
   res.render('crear-cuenta', {
-    nombrePagina: 'Crea tu cuenta en CodeCareer',
-    tagline: 'Comienza a publicar tus ofertas'
+    nombrePagina: 'Crea tu cuenta en CodeCareer...',
+    tagline: 'y comienza a publicar tus ofertas'
   });
 };
 

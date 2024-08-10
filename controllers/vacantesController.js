@@ -33,7 +33,7 @@ exports.agregarVacante = async (req, res) => {
     // Dividir las habilidades en un array
     vacante.skills = req.body.skills.split(',');
 
-    vacante.categoria = encodeURIComponent(req.body.categoria); //* Codificar categoría
+    // vacante.categoria = encodeURIComponent(req.body.categoria); //* Codificar categoría
 
     // Guardar la nueva vacante en la base de datos
     await vacante.save();
