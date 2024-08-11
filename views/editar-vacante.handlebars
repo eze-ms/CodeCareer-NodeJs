@@ -3,21 +3,46 @@
         <div class="content-info">
             <h3>Información General</h3>
             <div class="campo">
-                <label>Titulo</label>
-                <input type="text" name="titulo" placeholder="ejemplo: Full Stack Developer" value="{{vacante.titulo}}">
+                <label>Título</label>
+                <input type="text" name="titulo" placeholder="Ejemplo: Full Stack Developer" value="{{vacante.titulo}}">
             </div>
             <div class="campo">
                 <label>Empresa</label>
-                <input type="text" name="empresa" placeholder="Empresa Contrata" value="{{vacante.empresa}}">
+                <input type="text" name="empresa" placeholder="Empresa Contratante" value="{{vacante.empresa}}">
             </div>
             <div class="campo">
                 <label>Ubicación</label>
-                <input type="text" name="ubicacion" placeholder="ejemplo: Madrid, Barcelona o Remoto" value="{{vacante.ubicacion}}">
+                <input type="text" name="ubicacion" placeholder="Ejemplo: Madrid, Barcelona o Remoto" value="{{vacante.ubicacion}}">
             </div>
+
+            <div class="campo">
+                <label>Categoría</label>
+                <select name="categoria">
+                    <option value="" disabled>-- Selecciona --</option>
+                    <option value="Frontend" {{#if (eq vacante.categoria "Frontend")}}selected{{/if}}>Frontend</option>
+                    <option value="Backend" {{#if (eq vacante.categoria "Backend")}}selected{{/if}}>Backend</option>
+                    <option value="FullStack" {{#if (eq vacante.categoria "FullStack")}}selected{{/if}}>FullStack</option>
+                    <option value="Mobile" {{#if (eq vacante.categoria "Mobile")}}selected{{/if}}>Mobile</option>
+                    <option value="ProductDesign" {{#if (eq vacante.categoria "ProductDesign")}}selected{{/if}}>Product Design</option>
+                    <option value="DevOps" {{#if (eq vacante.categoria "DevOps")}}selected{{/if}}>DevOps</option>
+                    <option value="Cloud" {{#if (eq vacante.categoria "Cloud")}}selected{{/if}}>Cloud</option>
+                    <option value="Microsoft" {{#if (eq vacante.categoria "Microsoft")}}selected{{/if}}>Microsoft</option>
+                    <option value="IoT" {{#if (eq vacante.categoria "IoT")}}selected{{/if}}>IoT</option>
+                    <option value="BigData" {{#if (eq vacante.categoria "BigData")}}selected{{/if}}>Big Data</option>
+                    <option value="DataScience" {{#if (eq vacante.categoria "DataScience")}}selected{{/if}}>Data Science</option>
+                </select>
+            </div>
+
             <div class="campo">
                 <label>Salario (EU)</label>
-                <input type="text" name="salario" placeholder="ejemplo: 1500€" value="{{vacante.salario}}">
+                <input type="text" name="salario" placeholder="Ejemplo: 60,000€ - 80,000€ anuales" value="{{vacante.salario}}">
             </div>
+
+            <div class="campo">
+                <label>Experiencia</label>
+                <input type="text" name="experiencia" placeholder="Ejemplo: 4-6 años" value="{{vacante.experiencia}}">
+            </div>
+
             <div class="campo">
                 <label>Contrato</label>
                 <select name="contrato">
@@ -32,23 +57,7 @@
                     {{/tipoContrato}}
                 </select>
             </div>
-            <div class="campo">
-                <label>Categoria</label>
-                <select name="categoria">
-                    <option value="" disabled>-- Selecciona --</option>
-                    <option value="Frontend" {{#if (eq vacante.categoria "Frontend")}}selected{{/if}}>Frontend</option>
-                    <option value="Backend" {{#if (eq vacante.categoria "Backend")}}selected{{/if}}>Backend</option>
-                    <option value="FullStack" {{#if (eq vacante.categoria "FullStack")}}selected{{/if}}>FullStack</option>
-                    <option value="Mobile" {{#if (eq vacante.categoria "Mobile")}}selected{{/if}}>Mobile</option>
-                    <option value="UI/UX" {{#if (eq vacante.categoria "UI/UX")}}selected{{/if}}>UI/UX</option>
-                    <option value="DevOps" {{#if (eq vacante.categoria "DevOps")}}selected{{/if}}>DevOps</option>
-                    <option value="Cloud" {{#if (eq vacante.categoria "Cloud")}}selected{{/if}}>Cloud</option>
-                </select>
-            </div>
-            <div class="campo">
-                <label>Experiencia</label>
-                <input type="text" name="experiencia" placeholder="ejemplo: de 2 a 4 años" value="{{vacante.experiencia}}">
-            </div>
+
             <div class="campo">
                 <label>Nivel</label>
                 <select name="nivel">
@@ -84,3 +93,6 @@
             <button type="button" id="show-more-btn" class="btn btn-azul">Ver más</button>
             <input type="hidden" name="skills" id="skills" value="{{vacante.skills}}">
             <input type="submit" value="Guardar cambios" class="btn btn-azul">
+        </div>
+    </form>
+</main>

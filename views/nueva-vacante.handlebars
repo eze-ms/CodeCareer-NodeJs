@@ -4,7 +4,7 @@
             <div class="box_info_vacante">
                 <h3>Información General</h3>
                 <div class="campo">
-                    <label>Titulo</label>
+                    <label>Título</label>
                     <input type="text" name="titulo" placeholder="Ejemplo: Full Stack Developer">
                 </div>
 
@@ -19,8 +19,31 @@
                 </div>
 
                 <div class="campo">
+                    <label>Categoría</label>
+                    <select name="categoria">
+                        <option value="" disabled selected>- Selecciona -</option>
+                        <option value="Frontend">Frontend Developer</option>
+                        <option value="Backend">Backend Developer</option>
+                        <option value="FullStack">FullStack Developer</option>
+                        <option value="ProductDesign">Product Designer</option>
+                        <option value="DevOps">DevOps Developer</option>
+                        <option value="Cloud">Cloud Developer</option>
+                        <option value="Mobile">Mobile Developer</option>
+                        <option value="BigData">Big Data Engineer</option>
+                        <option value="DataScience">Data Scientist</option>
+                        <option value="IoT">IoT Developer</option>
+                        <option value="Microsoft">Microsoft Developer</option>
+                    </select>
+                </div>
+
+                <div class="campo">
                     <label>Salario (EU)</label>
-                    <input type="text" name="salario" placeholder="Ejemplo: 35.000€ brutos anuales">
+                    <input type="text" name="salario" placeholder="Ejemplo: 60,000€ - 80,000€ anuales">
+                </div>
+
+                <div class="campo">
+                    <label>Experiencia</label>
+                    <input type="text" name="experiencia" placeholder="Ejemplo: 4-6 años">
                 </div>
 
                 <div class="campo">
@@ -34,25 +57,6 @@
                         <option value="Temporal">Contrato Temporal</option>
                         <option value="Practicas">Contrato de Prácticas</option>
                     </select>
-                </div>
-
-                <div class="campo">
-                    <label>Categoria</label>
-                    <select name="categoria">
-                        <option value="" disabled selected>- Selecciona -</option>
-                        <option value="Frontend">Frontend Developer</option>
-                        <option value="Backend">Backend Developer</option>
-                        <option value="FullStack">FullStack Developer</option>
-                        <option value="UIUX">UI/UX Developer</option>
-                        <option value="DevOps">DevOps Developer</option>
-                        <option value="Cloud">Cloud Developer</option>
-                    </select>
-
-                </div>
-
-                <div class="campo">
-                    <label>Experiencia</label>
-                    <input type="text" name="experiencia" placeholder="Ejemplo: de 2 a 4 años">
                 </div>
 
                 <div class="campo">
@@ -86,10 +90,10 @@
                 </ul>
             </div>
 
-        <div class="campo centrar-horizontal">
-            <button type="button" id="show-more-btn" class="btn btn-azul">Ver más</button>
-            <input type="hidden" name="skills" id="skills">
-            <input type="submit" value="Publicar" class="btn btn-azul">
-        </div>
+            <div class="campo centrar-horizontal">
+                <button type="button" id="show-more-btn" class="btn btn-azul">Ver más</button>
+                <input type="hidden" name="skills" id="skills">
+                <input type="submit" value="Publicar" class="btn btn-azul">
+            </div>
     </form>
 </main>

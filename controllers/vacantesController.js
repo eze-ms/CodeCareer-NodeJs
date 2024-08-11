@@ -72,6 +72,33 @@ exports.mostrarVacante = async (req, res, next) => {
 };
 
 // ==============================================
+//! Filtrar vacantes por categoría
+// ==============================================
+exports.filtrarPorCategoria = async (req, res) => {
+    try {
+        const categoriaSeleccionada = req.body.categoria;
+
+        const query = categoriaSeleccionada === 'Todas' ? {} : { categoria: categoriaSeleccionada };
+        const vacantes = await Vacante.find(query).lean();
+        const categorias = await Vacante.distinct('categoria');
+
+        res.render('home', {
+            nombrePagina: 'Vacantes filtradas',
+            categorias, 
+            vacantes,
+            categoriaSeleccionada,
+            cerrarSesion: true,
+            nombre: req.user ? req.user.nombre : null,
+            imagen: req.user ? req.user.imagen : null
+        });
+    } catch (error) {
+        console.error('Error al filtrar las vacantes:', error);
+        req.flash('error', 'Hubo un error al filtrar las vacantes');
+        res.redirect('back');
+    }
+};
+
+// ==============================================
 //! Renderizar el formulario para editar una vacante
 // ==============================================
 exports.formEditarVacante = async (req, res, next) => {

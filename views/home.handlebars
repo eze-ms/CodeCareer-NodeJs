@@ -1,4 +1,15 @@
 <main class="main_lista-vacantes">
+  <form action="/vacantes/filtrar" method="post" class="content_categorias" id="form-filtro">
+      <label for="categorias" class="label_categorias">Categorías</label>
+      <select id="categorias" class="select_categorias" name="categoria" onchange="document.getElementById('form-filtro').submit();">
+          <option value="Todas" {{#if (eq categoriaSeleccionada "Todas")}}selected{{/if}}>Todas</option>
+          {{#each categorias}} 
+              <option value="{{this}}" {{#if (eq ../categoriaSeleccionada this)}}selected{{/if}}>{{this}}</option>
+          {{/each}}
+      </select>
+  </form>
+
+  
   <h2 class="lista-vacantes">Lista de Vacantes</h2>
   {{#if vacantes.length}}
     <div class="grid-vacantes">

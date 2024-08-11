@@ -1,6 +1,6 @@
 
 // ==============================================
-// Importar módulos necesarios
+//! Importar módulos necesarios
 // ==============================================
 import { accionesListado } from './alert';  // Importar la función
 
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const skills = document.querySelector('.lista-conocimientos');
 
     // ==============================================
-    // Limpiar las alertas si existen
+    //* Limpiar las alertas si existen
     // ==============================================
     let alertas = document.querySelector('.alertas');
     if (alertas) {
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==============================================  
-    // Configuración de eventos para la lista de habilidades
+    //* Configuración de eventos para la lista de habilidades
     // ==============================================
     if (skills) {
         skills.addEventListener('click', agregarSkills);
@@ -25,21 +25,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==============================================
-    // Configuración de eventos para el listado de vacantes
+    //* Configuración de eventos para el listado de vacantes
     // ==============================================
     const vacantesListado = document.querySelector('.panel-administracion');
     if (vacantesListado) {
         vacantesListado.addEventListener('click', accionesListado);
     }
+
+    // ==============================================
+    //* Filtrado de vacantes por categoría
+    // ==============================================
+    const categoriaSelect = document.querySelector('#categorias');
+    if(categoriaSelect) {
+        categoriaSelect.addEventListener('change', () => {
+            // Enviar el formulario automáticamente cuando se selecciona una categoría
+            document.getElementById('form-filtro').submit();
+        });
+    }
+
 });
 
 // ==============================================
-// Conjunto para almacenar las habilidades seleccionadas
+//! Conjunto para almacenar las habilidades seleccionadas
 // ==============================================
 const selectedSkills = new Set();
 
 // ==============================================
-// Función: Agregar o quitar habilidades al conjunto
+//! Función: Agregar o quitar habilidades al conjunto
 // ==============================================
 const agregarSkills = e => {
     if (e.target.tagName === 'LI') {
@@ -63,7 +75,7 @@ const agregarSkills = e => {
 };
 
 // ==============================================
-// Función: Inicializar el conjunto de habilidades seleccionadas
+//! Función: Inicializar el conjunto de habilidades seleccionadas
 // ==============================================
 const skillsSeleccionados = () => {
     const seleccionadas = Array.from(document.querySelectorAll('.lista-conocimientos .activo'));
@@ -80,7 +92,7 @@ const skillsSeleccionados = () => {
 };
 
 // ==============================================
-// Función: Limpiar todas las alertas del DOM periódicamente
+//! Función: Limpiar todas las alertas del DOM periódicamente
 // ==============================================
 const limpiarAlertas = () => {
     const alertas = document.querySelector('.alertas');

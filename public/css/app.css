@@ -32,6 +32,12 @@ h3 {
     font-size: 1.5rem;
     color: #616065;
 }
+ul{
+    list-style: none;
+}
+.items_categories{
+    padding: 0;
+}
 .lista-vacantes{
     margin: 5rem 0;
 }
@@ -67,6 +73,29 @@ h3 {
 }
 .contenido-principal{
     padding: 5rem 3rem 7rem 3rem;
+}
+.content_categorias {
+    display: flex;
+    align-items: center;
+    width: 25%;
+}
+.label_categorias { 
+    font-size: 1.5rem; /* Tailwind's 'text-sm' */
+    text-transform: uppercase; /* Tailwind's 'uppercase' */
+    color: #4a5568; /* Tailwind's 'text-gray-700' */
+    font-weight: 500; /* Tailwind's 'font-medium' */
+    margin-right: 1rem;
+}
+.select_categorias{
+    flex: 1; 
+    background-color: #ffffff;
+    width: 100%;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.75rem; 
+    padding-bottom: 0.75rem; 
+    border: 2px solid #0f0e17;
+    border-radius: 0.5rem;
 }
 
 /** Botones **/
@@ -161,7 +190,7 @@ h3 {
 .grid-vacantes {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr)); /* Las columnas ocupan el espacio disponible */
-    gap: 1rem; /* Ajustar el gap según sea necesario */
+    gap: 3rem; 
     justify-items: center;
     width: 100%; /* Asegura que ocupe todo el ancho disponible */
     box-sizing: border-box;
@@ -186,7 +215,9 @@ h3 {
     background-color: #d4f6ed;
     cursor: pointer;
 }
-
+.hidden_category {
+    display: none;
+  }
 .hidden_show_more {
     display: none !important;
   }
@@ -237,6 +268,9 @@ h3 {
     }
 } */
 @media screen and (min-width: 768px) and (max-width: 900px) {
+    .content_categorias {
+        width: 45%;
+    }
     .box_info_header {
         padding-right: 1rem;
         padding-left: 1rem;
@@ -250,6 +284,10 @@ h3 {
     }
     .editar-btn{
         width: 40%;
+    }
+    .grid-vacantes{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem;
     }
 }
 
@@ -278,6 +316,9 @@ h3 {
 @media screen and (min-width: 320px) and (max-width: 767px) {
     body{
         margin: 0;
+    }
+    .content_categorias {
+        width: 75%;
     }
     .nombre-sitio > .box_info_header{
         padding-left: 1rem;
@@ -402,7 +443,14 @@ h3 {
     .editar-btn {
         width: 40%;
     }
-    
+
+    .caja_vacante{
+        align-items: flex-start;
+    }
+    .skills-lista {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        
+    }
 }
 /************************* PÁGINA VACANTES**************************/
     .form_nueva_vancante{
@@ -446,9 +494,6 @@ h3 {
         padding: 1rem;
         border-radius: 1rem;
         border: 2px solid #0f0e17;
-    }
-    .caja_vacante{
-        display: flex;
     }
     .etiqueta{
         font-weight: 600;
@@ -831,12 +876,10 @@ h3 {
 }
 
 .campo_campo>h3 {
-    margin-top: 7rem;
+    margin-top: 3rem;
+    text-align: center;
 }
 .content-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     margin-bottom: 4rem ;
     width: 100%;
 }
@@ -940,10 +983,10 @@ trix-toolbar .trix-button--icon-strike {
 
 .lista-conocimientos {
     list-style: none;
-    padding: 0;    
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Configuración del grid */
+    gap: 1rem; /* Espacio entre elementos */
 }
 /* Clase base con estilos comunes */
 .lista-conocimientos li{
@@ -959,6 +1002,12 @@ trix-toolbar .trix-button--icon-strike {
     align-items: center;
     justify-content: center;
 }
+.categoria-bloque {
+    grid-column: 1 / -1; /* Hacer que el bloque ocupe todo el ancho */
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
 
 /* Clase específica para .lista-conocimientos */
 .lista-conocimientos li {
@@ -967,11 +1016,23 @@ trix-toolbar .trix-button--icon-strike {
     height: 5rem;
 }
 
+
 .lista-conocimientos  li.activo {
     background-color: #fbe2f4;
 }
 .lista-conocimientos  li:hover {
     cursor: pointer;
+}
+.skills-lista {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.5rem;
+    padding-left: 0;
+}
+
+.categoria-bloque .categoria-titulo{
+    font-size: 2rem;
+    font-weight: 400;
 }
 
 @media (min-width:480px) {

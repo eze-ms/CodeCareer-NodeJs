@@ -20,6 +20,12 @@ module.exports = () => {
     homeController.mostrarTrabajos);
 
   // ==============================================
+  //! Ruta para Filtrar Vacantes por Categoría
+  // ==============================================
+  router.post('/vacantes/filtrar', vacantesController.filtrarPorCategoria);
+
+
+  // ==============================================
   //! Rutas para el Formulario de Creación de Nuevas Vacantes
   // ==============================================
   router.get('/vacantes/nueva', 
