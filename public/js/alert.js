@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 document.addEventListener('DOMContentLoaded', () => {
     // ==============================================
-    // Configuración de eventos para el listado de vacantes
+    //! Configuración de eventos para el listado de vacantes
     // ==============================================
     const vacantesListado = document.querySelector('.panel-administracion');
     if (vacantesListado) {
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==============================================
-// Función para manejar eliminar en la lista de ofertas
+//! Función para manejar eliminar en la lista de ofertas
 // ==============================================
 export const accionesListado = e => {
     e.preventDefault();
