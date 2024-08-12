@@ -119,10 +119,15 @@ app.use((error, req, res, next) => {
   res.status(status);
   res.render('error');
 })
+
 // ==============================================
-//! Iniciar el servidor en el puerto definido en la variable de entorno
+//! Configuración para que Heroku asigne puerta
 // ==============================================
-const PORT = process.env.PUERTO || 3000; // Usar 3000 como puerto predeterminado si no se define PUERTO
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+const host = '0.0.0.0';
+const port = process.env.PORT;
+
+app.listen(port, host, () => {
+  console.log('El servidor está funcionado correctamente');
+  
 });
+

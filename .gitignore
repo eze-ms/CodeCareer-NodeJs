@@ -1,6 +1,13 @@
 # Node modules
 node_modules/
 
+# Archivos mac
+-DS_Store
+
+# Archivos public
+public/uploads/cv/*
+public/uploads/perfiles/*
+
 # Environment variables
 variables.env
 .env
