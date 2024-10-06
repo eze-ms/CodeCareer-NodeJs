@@ -8,7 +8,9 @@ require('dotenv').config({ path: 'variables.env' }); // Cargar las variables de 
 // Conectar a la BBDD
 // ==============================================
 // Conectar a la base de datos usando la URL de conexión almacenada en la variable de entorno 'DATABASE'
-mongoose.connect(process.env.DATABASE, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.DATABASE)
+  .then(() => console.log('Conectado a MongoDB'))
+  .catch(err => console.log('Error al conectar a MongoDB', err));
 
 // Manejar errores de conexión
 // Escuchar el evento 'error' en la conexión de mongoose y registrar cualquier error que ocurra
