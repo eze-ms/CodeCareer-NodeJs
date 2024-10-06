@@ -124,7 +124,7 @@ app.use((error, req, res, next) => {
 //! Configuración para que Heroku asigne puerta
 // ==============================================
 const host = '0.0.0.0';
-const port = process.env.PORT;
+const port = process.env.PORT || 4000; // Si no se define en el entorno, usa el puerto 5000
 
 app.listen(port, host, () => {
   console.log('El servidor está funcionado correctamente');
