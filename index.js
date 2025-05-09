@@ -97,6 +97,15 @@ app.use((req, res, next) => {
   next();
 });
 
+
+// ==============================================
+//! Ruta ping para mantener el servidor activo
+// ==============================================
+app.get('/api/ping', (req, res) => {
+  res.send('pong');
+});
+
+
 // ==============================================
 //! Usar el archivo de rutas para manejar las solicitudes a la raíz
 // ==============================================
