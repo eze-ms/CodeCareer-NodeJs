@@ -81,7 +81,7 @@ CodeCareer/
 └── webpack.config.js   # Configuración de Webpack
 
 
-
+```
 ---
 
 ## ️🛠 Instalación
