@@ -94,5 +94,5 @@ git clone https://github.com/eze-ms/CodeCareer-NodeJs.git
 ```
 ---
 
-© 2025. Proyecto desarrollado por Ezequiel Macchi Seoane
+© 2024. Proyecto desarrollado por Ezequiel Macchi Seoane
 
