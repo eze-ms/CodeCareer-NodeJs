@@ -3,6 +3,8 @@
 ![Status](https://img.shields.io/badge/status-live-success?style=flat-square)
 ![Node.js](https://img.shields.io/badge/backend-Node.js-green?style=flat-square)
 ![MongoDB](https://img.shields.io/badge/database-MongoDB-brightgreen?style=flat-square)
+![Frontend](https://img.shields.io/badge/frontend-Handlebars-orange?style=flat-square)
+
 
 ## 📄 Descripción
 
@@ -55,7 +57,7 @@
 
 ---
 
-## 📋 Requisitos Previos
+## 📋 Requisitos
 
 - Node.js v18 o superior
 - MongoDB Atlas (base de datos remota)
