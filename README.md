@@ -12,7 +12,7 @@
 
 ## 🌐 Demo en Vivo
 
-🔗 [code-career-render.onrender.com](https://code-career-render.onrender.com/)
+🔗 [code-career-render.onrender.com](https://code-career-render.onrender.com)
 
 
 ---
@@ -80,17 +80,17 @@ CodeCareer/
 ├── index.js            # Punto de entrada del servidor
 └── webpack.config.js   # Configuración de Webpack
 
-
 ```
 ---
 
-## ️🛠 Instalación
 
-1. Clona el repositorio:
+## 🛠️ Instalación
 
 ```bash
 git clone https://github.com/eze-ms/CodeCareer-NodeJs.git
 
+```
 ---
 
 © 2025. Proyecto desarrollado por Ezequiel Macchi Seoane
+
