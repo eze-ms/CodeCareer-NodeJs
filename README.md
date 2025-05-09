@@ -12,7 +12,7 @@
 
 ## 🌐 Demo en Vivo
 
-🔗 [code-career-render.onrender.com](https://code-career-render.onrender.com)
+🔗 [code-career-render.onrender.com](https://code-career-render.onrender.com/)
 
 
 ---
@@ -66,15 +66,20 @@
 
 ## 🧱 Estructura del Proyecto
 
-.
-├── controllers       # Lógica de rutas
-├── models            # Modelos Mongoose
-├── routes            # Definiciones de rutas
-├── views             # Templates Handlebars
-├── public            # Archivos estáticos
-├── config            # DB, Passport, email
-├── helpers, handlers # Utilidades
-└── index.js          # Entrada principal
+```bash
+CodeCareer/
+├── config/             # Configuraciones (DB, Passport, Email)
+├── controllers/        # Controladores con lógica de negocio
+├── handlers/           # Lógica auxiliar (ej. envío de emails)
+├── helpers/            # Funciones de ayuda para Handlebars
+├── models/             # Modelos de datos Mongoose
+├── public/             # Archivos estáticos (JS, CSS, imágenes, etc.)
+├── routes/             # Definición de rutas de la aplicación
+├── views/              # Vistas con Handlebars
+├── variables.env       # Variables de entorno
+├── index.js            # Punto de entrada del servidor
+└── webpack.config.js   # Configuración de Webpack
+
 
 
 ---
