@@ -1,4 +1,4 @@
-# 🚀 CodeCareer
+# CodeCareer
 
 ![Status](https://img.shields.io/badge/status-live-success?style=flat-square)
 ![Node.js](https://img.shields.io/badge/backend-Node.js-green?style=flat-square)
