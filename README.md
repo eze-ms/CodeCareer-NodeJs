@@ -12,7 +12,7 @@
 
 ---
 
-## 🌐 Demo en Vivo
+## 🌐 Demo
 
 🔗 [code-career-render.onrender.com](https://code-career-render.onrender.com)
 
