@@ -19,7 +19,7 @@
 
 ---
 
-## 🖼️ Capturas de Pantalla
+## 🖼️ Capturas
 
 ![Formulario](./img/form.png)
 ![Formulario](./img/cover.png)
