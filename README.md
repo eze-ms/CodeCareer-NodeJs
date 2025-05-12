@@ -96,7 +96,7 @@ git clone https://github.com/eze-ms/CodeCareer-NodeJs.git
 
 ```
 
-### Instalar dependencias del backend
+### Instalar dependencias
 ```bash
 npm install
 ```
