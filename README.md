@@ -21,8 +21,11 @@
 
 ## 🖼️ Capturas
 
-![Formulario](./img/form.png)
-![Formulario](./img/cover.png)
+#### Vista de portada
+![Portada de la app CodeCareer](./img/cover.png)
+
+#### Panel de oferta y formulario
+![Vista de la oferta y registro de formulario](./img/form.png)
 
 ---
 
@@ -91,6 +94,16 @@ CodeCareer/
 ```bash
 git clone https://github.com/eze-ms/CodeCareer-NodeJs.git
 
+```
+
+### Instalar dependencias del backend
+```bash
+npm install
+```
+
+### Iniciar servidor
+```bash
+npm run dev
 ```
 ---
 
